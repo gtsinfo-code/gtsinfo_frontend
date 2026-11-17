@@ -129,7 +129,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
         scrolled || !isHomePage
           ? 'bg-[#04152F]/95 backdrop-blur-xl shadow-[0_6px_30px_rgba(4,21,47,0.7)] border-b border-[#0B3D70]/60 py-3 sm:py-3.5'
-          : 'bg-transparent border-b border-white/10 py-4 sm:py-5'
+          : 'bg-[#04152F]/80 backdrop-blur-md shadow-[0_4px_24px_rgba(4,21,47,0.5)] border-b border-[#0B3D70]/40 py-3.5 sm:py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

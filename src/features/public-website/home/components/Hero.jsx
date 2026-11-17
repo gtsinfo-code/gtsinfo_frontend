@@ -48,7 +48,7 @@ export default function Hero() {
         <img
           src={heroBgImage}
           alt="GTSInfo Digital Globe Horizon"
-          className="absolute inset-0 w-full h-full object-cover object-bottom brightness-[1.03] contrast-[1.04]"
+          className="absolute inset-0 w-full h-full object-cover object-center brightness-[1.03] contrast-[1.04]"
           loading="eager"
         />
 
@@ -61,12 +61,12 @@ export default function Hero() {
           }}
         />
 
-        {/* Subtle top edge fade for smooth navbar blending */}
+        {/* Deep navy top gradient preventing any merging under the navbar */}
         <div
-          className="absolute top-0 inset-x-0 h-28 pointer-events-none"
+          className="absolute top-0 inset-x-0 h-36 sm:h-44 pointer-events-none z-10"
           style={{
             background:
-              'linear-gradient(180deg, rgba(4, 21, 47, 0.7) 0%, transparent 100%)',
+              'linear-gradient(180deg, #04152F 0%, rgba(4, 21, 47, 0.95) 45%, rgba(4, 21, 47, 0.5) 75%, transparent 100%)',
           }}
         />
 
@@ -82,7 +82,7 @@ export default function Hero() {
       </div>
 
       {/* ──────────────── 2. HERO MAIN CONTENT & GLOBE ORBIT ──────────────── */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 sm:pt-28 pb-4 flex-grow flex items-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 sm:pt-36 lg:pt-40 pb-4 flex-grow flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center w-full">
 
           {/* ════════════ LEFT COLUMN: Editorial Brand Headline & CTAs ════════════ */}
@@ -170,7 +170,7 @@ export default function Hero() {
           </div>
 
           {/* ════════════ RIGHT COLUMN: DEDICATED GLOBE VISUAL CONTAINER ════════════ */}
-          <div className="lg:col-span-6 xl:col-span-6 relative w-full flex items-center justify-center min-h-[380px] sm:min-h-[460px] lg:min-h-[560px]">
+          <div className="lg:col-span-6 xl:col-span-6 relative w-full flex items-center justify-center min-h-[360px] sm:min-h-[420px] lg:min-h-[510px]">
             <HeroFloatingCards mounted={mounted} />
           </div>
 

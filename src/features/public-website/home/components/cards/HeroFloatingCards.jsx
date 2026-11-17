@@ -30,7 +30,7 @@ export default function HeroFloatingCards({ mounted = true }) {
     <>
       {/* ──────────────── 1. DESKTOP GLOBE CONTAINER ORBIT (lg and above) ──────────────── */}
       <div
-        className={`hidden lg:block relative w-full h-[500px] sm:h-[540px] lg:h-[560px] select-none transition-opacity duration-700 ${
+        className={`hidden lg:block relative w-full h-[460px] sm:h-[490px] lg:h-[510px] select-none transition-opacity duration-700 ${
           mounted ? 'opacity-100' : 'opacity-0'
         }`}
         aria-hidden="true"
@@ -39,8 +39,8 @@ export default function HeroFloatingCards({ mounted = true }) {
         <div
           className="absolute z-20 pointer-events-auto"
           style={{
-            top: '6%',
-            left: '2%',
+            top: '10%',
+            left: '3%',
           }}
         >
           <CloudSolutionsCard />
@@ -50,7 +50,7 @@ export default function HeroFloatingCards({ mounted = true }) {
         <div
           className="absolute z-20 pointer-events-auto"
           style={{
-            top: '2%',
+            top: '6%',
             right: '6%',
           }}
         >
@@ -61,8 +61,8 @@ export default function HeroFloatingCards({ mounted = true }) {
         <div
           className="absolute z-20 pointer-events-auto"
           style={{
-            top: '38%',
-            right: '0%',
+            top: '40%',
+            right: '1%',
           }}
         >
           <DataAnalyticsCard />
@@ -72,8 +72,8 @@ export default function HeroFloatingCards({ mounted = true }) {
         <div
           className="absolute z-20 pointer-events-auto"
           style={{
-            top: '56%',
-            left: '4%',
+            top: '58%',
+            left: '5%',
           }}
         >
           <AIAutomationCard />
@@ -83,8 +83,8 @@ export default function HeroFloatingCards({ mounted = true }) {
         <div
           className="absolute z-20 pointer-events-auto"
           style={{
-            top: '66%',
-            right: '6%',
+            top: '68%',
+            right: '7%',
           }}
         >
           <QualityEngineeringCard />
