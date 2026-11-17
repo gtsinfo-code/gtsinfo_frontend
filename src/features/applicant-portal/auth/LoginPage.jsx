@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Eye, 
-  EyeOff, 
-  LogIn, 
-  Lock, 
-  Mail, 
-  CheckCircle2, 
-  Info, 
+import {
+  Eye,
+  EyeOff,
+  LogIn,
+  Lock,
+  Mail,
+  CheckCircle2,
+  Info,
   ArrowRight,
   ShieldCheck,
   UserCheck,
@@ -68,10 +68,10 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-softblue-50/70 flex items-center justify-center py-28 px-4 sm:px-6 lg:px-8">
-      
+
       {/* Premium Split Layout Card */}
       <div className="max-w-4xl w-full bg-white rounded-3xl shadow-2xl border border-brandBorder overflow-hidden grid grid-cols-1 lg:grid-cols-12 animate-fade-in">
-        
+
         {/* Left Branding Panel */}
         <div className="lg:col-span-5 bg-navy-950 p-8 sm:p-12 text-white relative flex flex-col justify-between overflow-hidden">
           {/* Ambient Lighting */}
@@ -118,7 +118,7 @@ export default function LoginPage() {
 
         {/* Right Form Panel */}
         <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-center">
-          
+
           <div className="mb-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-softblue-100 text-primary text-[11px] font-bold uppercase tracking-wider mb-2">
               <LogIn className="w-3.5 h-3.5" />
@@ -132,29 +132,14 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Demonstration Notice */}
-          <div className="mb-6 p-3 bg-softblue-50 border border-softblue-200 rounded-xl flex items-center justify-between gap-2 text-xs text-brandText-secondary">
-            <div className="flex items-center gap-2">
-              <Info className="w-4 h-4 text-primary flex-shrink-0" />
-              <span>Demonstration UI (SRS Phase 1)</span>
-            </div>
-            <button
-              type="button"
-              onClick={handleDemoFill}
-              className="text-xs font-bold text-primary hover:text-electric underline flex-shrink-0"
-            >
-              Fill Demo Credentials
-            </button>
-          </div>
-
-          {/* Success Demonstration Banner */}
+          {/* Success Banner */}
           {isSuccess && (
             <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-start gap-3 text-xs text-emerald-800 animate-fade-in">
               <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-sm text-emerald-900">Credentials Validated Successfully!</p>
+                <p className="font-bold text-sm text-emerald-900">Credentials Validated Successfully</p>
                 <p className="mt-0.5">
-                  Frontend demonstration passed. In Phase 2, this issues an HTTP-only JWT and redirects to the full candidate dashboard.
+                  Redirecting to your secure candidate dashboard...
                 </p>
               </div>
             </div>
@@ -162,7 +147,7 @@ export default function LoginPage() {
 
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            
+
             {/* Email */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1.5">
@@ -175,9 +160,8 @@ export default function LoginPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="name@example.com"
-                  className={`w-full pl-11 pr-4 py-3 bg-softblue-50/70 border rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                    errors.email ? 'border-red-400' : 'border-brandBorder'
-                  }`}
+                  className={`w-full pl-11 pr-4 py-3 bg-softblue-50/70 border rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.email ? 'border-red-400' : 'border-brandBorder'
+                    }`}
                 />
               </div>
               {errors.email && <p className="text-[11px] text-red-500 mt-1">{errors.email}</p>}
@@ -203,9 +187,8 @@ export default function LoginPage() {
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   placeholder="••••••••"
-                  className={`w-full pl-11 pr-11 py-3 bg-softblue-50/70 border rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                    errors.password ? 'border-red-400' : 'border-brandBorder'
-                  }`}
+                  className={`w-full pl-11 pr-11 py-3 bg-softblue-50/70 border rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.password ? 'border-red-400' : 'border-brandBorder'
+                    }`}
                 />
                 <button
                   type="button"

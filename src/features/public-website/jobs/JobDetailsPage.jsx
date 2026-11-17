@@ -148,14 +148,6 @@ export default function JobDetailsPage() {
             {/* Main Column: Job Description & Responsibilities */}
             <div className="lg:col-span-8 space-y-10">
               
-              {/* Demonstration Notice */}
-              <div className="p-4 bg-softblue-50 border border-softblue-200 rounded-2xl flex items-center gap-3 text-xs text-brandText-secondary">
-                <Info className="w-4 h-4 text-primary flex-shrink-0" />
-                <span>
-                  <strong>UI Layout Demonstration:</strong> This job posting represents verified SRS schema modeling.
-                </span>
-              </div>
-
               {/* Role Summary */}
               <div>
                 <h2 className="text-xl sm:text-2xl font-bold text-brandText-primary mb-4">
@@ -217,7 +209,7 @@ export default function JobDetailsPage() {
               <div className="p-8 rounded-3xl bg-softblue-50/80 border border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                   <h4 className="text-lg font-bold text-brandText-primary">Ready to apply?</h4>
-                  <p className="text-xs text-brandText-secondary mt-1">Submit your details to start the demonstration evaluation.</p>
+                  <p className="text-xs text-brandText-secondary mt-1">Submit your details to start your application process.</p>
                 </div>
                 {isOpen ? (
                   <button
@@ -407,7 +399,7 @@ export default function JobDetailsPage() {
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1">
-                    Resume Upload (Demo)
+                    Resume / CV Document
                   </label>
                   <div className="border border-dashed border-brandBorder p-3 rounded-xl text-center bg-softblue-50/50">
                     <Upload className="w-5 h-5 text-slate-400 mx-auto mb-1" />

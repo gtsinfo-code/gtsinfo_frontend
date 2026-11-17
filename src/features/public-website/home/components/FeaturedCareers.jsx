@@ -56,16 +56,6 @@ export default function FeaturedCareers() {
           </div>
         </div>
 
-        {/* Demonstration Notice */}
-        <ScrollReveal variant="fade-up" delay={250}>
-          <div className="mb-8 p-3.5 bg-white border border-softblue-200 rounded-xl flex items-center gap-3 text-xs text-brandText-secondary shadow-xs">
-            <Info className="w-4 h-4 text-primary flex-shrink-0" />
-            <span>
-              <strong className="text-brandText-primary">Demonstration Openings:</strong> The vacancies below demonstrate the job discovery layout, role filters, and applicant flow per SRS Section 3.4.
-            </span>
-          </div>
-        </ScrollReveal>
-
         {/* Featured Job Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {featuredJobs.map((job, idx) => (

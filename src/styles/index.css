@@ -284,6 +284,74 @@
   transform: scale(1);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   GTSInfo Hero 3D Service Cards Ambient Floating Keyframes
+───────────────────────────────────────────────────────────────────────────── */
+@keyframes heroFloat1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(0.4deg);
+  }
+}
+
+@keyframes heroFloat2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+@keyframes heroFloat3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.3deg);
+  }
+}
+
+@keyframes heroFloat4 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-0.4deg);
+  }
+}
+
+@keyframes heroFloat5 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-hero-float-1 {
+  animation: heroFloat1 4.6s ease-in-out infinite;
+}
+
+.animate-hero-float-2 {
+  animation: heroFloat2 5.2s ease-in-out infinite 0.3s;
+}
+
+.animate-hero-float-3 {
+  animation: heroFloat3 4.8s ease-in-out infinite 0.6s;
+}
+
+.animate-hero-float-4 {
+  animation: heroFloat4 5.5s ease-in-out infinite 0.9s;
+}
+
+.animate-hero-float-5 {
+  animation: heroFloat5 5.0s ease-in-out infinite 0.4s;
+}
+
 /* Accessibility: Respect Prefers Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

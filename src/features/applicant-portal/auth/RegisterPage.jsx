@@ -108,14 +108,6 @@ export default function RegisterPage() {
         {/* Clean Form Surface with subtle glassmorphic elements */}
         <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/20">
           
-          {/* Demonstration Notice */}
-          <div className="mb-6 p-3 bg-softblue-50 border border-softblue-200 rounded-xl flex items-center gap-2 text-xs text-brandText-secondary">
-            <Info className="w-4 h-4 text-primary flex-shrink-0" />
-            <span>
-              <strong>Demonstration Mode (SRS Phase 1):</strong> Client-side input verification. In Phase 2, accounts persist to PostgreSQL with hashed passwords.
-            </span>
-          </div>
-
           {isSuccess ? (
             <div className="text-center py-8 space-y-4 animate-fade-in">
               <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto" />

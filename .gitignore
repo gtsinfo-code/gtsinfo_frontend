@@ -1,4 +1,4 @@
-# Logs
+# ── Logs ──────────────────────────────────────────────────────────────
 logs
 *.log
 npm-debug.log*
@@ -7,18 +7,62 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# ── Build output ───────────────────────────────────────────────────────
 node_modules
 dist
 dist-ssr
-*.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# ── Environment files — NEVER commit these ─────────────────────────────
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+.env.staging.local
+.env.*.local
+*.env
+*.env.*
+!.env.example
+
+# ── Large binary media files (store in public or CDN) ───────────────────
+src/assets/**/*.mp4
+src/assets/**/*.zip
+src/assets/**/*.tar.gz
+
+# ── Vite local overrides ───────────────────────────────────────────────
+*.local
+vite.config.local.*
+
+# ── OS / Editor files ──────────────────────────────────────────────────
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# ── VSCode (allow shared settings, block personal) ─────────────────────
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea
+
+# ── Coverage & test artifacts ──────────────────────────────────────────
+coverage
+*.lcov
+.nyc_output
+
+# ── TypeScript / Build cache ───────────────────────────────────────────
+*.tsbuildinfo
+
+# ── Misc ───────────────────────────────────────────────────────────────
+.cache
+.parcel-cache
+.turbo

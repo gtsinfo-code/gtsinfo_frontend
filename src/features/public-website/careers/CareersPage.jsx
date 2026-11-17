@@ -39,7 +39,7 @@ export default function CareersPage() {
     {
       step: "01",
       title: "Online Application",
-      desc: "Explore demonstration vacancies and register your candidate profile with your contact details and resume."
+      desc: "Explore current openings and submit your candidate profile with your contact details and resume."
     },
     {
       step: "02",
@@ -62,7 +62,7 @@ export default function CareersPage() {
     <div className="w-full overflow-hidden">
       
       {/* 1. Careers Hero */}
-      <section className="bg-navy-950 text-white pt-32 pb-20 lg:pt-36 lg:pb-24 relative overflow-hidden border-b border-navy-800">
+      <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-0 right-1/4 w-[480px] h-[480px] bg-primary/20 rounded-full blur-[140px] animate-glow-pulse" />
           <div className="absolute bottom-0 left-10 w-[380px] h-[380px] bg-cyan-accent/15 rounded-full blur-[120px]" />
@@ -234,13 +234,6 @@ export default function CareersPage() {
               <span>View All Vacancies & Filters</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-          </div>
-
-          <div className="mb-6 p-3 bg-white border border-softblue-200 rounded-xl text-xs text-brandText-secondary flex items-center gap-2">
-            <Info className="w-4 h-4 text-primary flex-shrink-0" />
-            <span>
-              <strong>Demonstration Openings:</strong> Provided for UI layout verification. In Phase 2, job openings sync in real-time with administrative job management.
-            </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

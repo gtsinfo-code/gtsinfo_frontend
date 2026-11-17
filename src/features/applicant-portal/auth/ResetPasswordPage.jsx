@@ -69,13 +69,6 @@ export default function ResetPasswordPage() {
         {/* Clean Form Card */}
         <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/20">
           
-          <div className="mb-6 p-3 bg-softblue-50 border border-softblue-200 rounded-xl flex items-center gap-2 text-xs text-brandText-secondary">
-            <Info className="w-4 h-4 text-primary flex-shrink-0" />
-            <span>
-              <strong>Demonstration Mode:</strong> Client-side validation only. In Phase 2, token validation verifies reset eligibility.
-            </span>
-          </div>
-
           {isSuccess ? (
             <div className="text-center py-6 space-y-4 animate-fade-in">
               <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto" />

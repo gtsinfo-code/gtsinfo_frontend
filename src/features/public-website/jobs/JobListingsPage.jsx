@@ -108,21 +108,11 @@ export default function JobListingsPage() {
       </section>
 
       {/* 2. Search & Filter Bar */}
-      <section className="py-20 bg-white text-brandText-primary">
+      <section className="py-16 lg:py-20 bg-white text-brandText-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Demonstration Notice */}
-          <ScrollReveal variant="fade-up">
-            <div className="mb-10 p-4 bg-softblue-50 border border-softblue-200 rounded-2xl flex items-center gap-3 text-xs text-brandText-secondary">
-              <Info className="w-4 h-4 text-primary flex-shrink-0" />
-              <span>
-                <strong className="text-brandText-primary">Demonstration Notice (SRS Section 3.4 & 3.5):</strong> These job listings demonstrate real-time filtering, status validation, and applicant routing.
-              </span>
-            </div>
-          </ScrollReveal>
-
           {/* Filter Panel */}
-          <ScrollReveal variant="fade-up" delay={100}>
+          <ScrollReveal variant="fade-up">
             <div className="bg-softblue-50/80 p-6 sm:p-8 rounded-3xl border border-brandBorder shadow-subtle mb-12">
               {/* Search Keyword Input */}
               <div className="relative mb-6">

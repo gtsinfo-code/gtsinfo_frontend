@@ -28,13 +28,12 @@ export default function AboutPage() {
     <div className="w-full overflow-hidden">
       
       {/* 1. Page Hero: "People. Purpose. Technology." */}
-      <section className="bg-navy-950 text-white pt-32 pb-20 lg:pt-36 lg:pb-24 relative overflow-hidden border-b border-navy-800">
+      <section className="bg-navy-950 text-white pt-36 pb-16 lg:pt-44 lg:pb-20 relative overflow-hidden border-b border-navy-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div className="absolute top-0 right-1/4 w-[480px] h-[480px] bg-primary/20 rounded-full blur-[140px] animate-glow-pulse" />
-          <div className="absolute bottom-0 left-10 w-[380px] h-[380px] bg-cyan-accent/15 rounded-full blur-[120px]" />
-          
-          <div 
-            className="absolute inset-0 opacity-[0.05]"
+          <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-primary/18 rounded-full blur-[130px] animate-glow-pulse" />
+          <div className="absolute bottom-0 left-10 w-[320px] h-[320px] bg-cyan-accent/12 rounded-full blur-[110px]" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage: `radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)`,
               backgroundSize: '40px 40px'
@@ -43,28 +42,27 @@ export default function AboutPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-2xl">
             <ScrollReveal variant="fade-up">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-navy-900 text-cyan-accent text-xs font-bold uppercase tracking-widest mb-6 border border-cyan-accent/25">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-navy-900 text-cyan-accent text-xs font-bold uppercase tracking-widest mb-5 border border-cyan-accent/25">
                 <Building2 className="w-3.5 h-3.5" />
                 <span>ABOUT GTSINFO</span>
               </div>
             </ScrollReveal>
 
-            {/* Mandatory Heading */}
+            {/* Headline — reduced from text-6xl to text-4xl sm:text-5xl */}
             <ScrollReveal variant="fade-up" delay={100}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-5 leading-tight">
                 People. Purpose.{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-primary to-cyan-accent block sm:inline">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-primary to-cyan-accent">
                   Technology.
                 </span>
               </h1>
             </ScrollReveal>
 
-            {/* Mandatory Supporting Text */}
             <ScrollReveal variant="fade-up" delay={200}>
-              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal">
-                Get to know GTSInfo, our workplace and the people behind our work.
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-xl">
+                Get to know GTSInfo — our workplace, our purpose, and the people behind our work.
               </p>
             </ScrollReveal>
           </div>
@@ -72,11 +70,11 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Editorial Company Overview Section */}
-      <section className="py-24 lg:py-28 bg-white text-brandText-primary">
+      <section className="py-14 lg:py-18 bg-white text-brandText-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-5 lg:pt-2">
               <ScrollReveal variant="fade-up">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-softblue-100 text-primary text-xs font-bold uppercase tracking-wider">
                   <span>Organization Overview</span>
@@ -84,13 +82,13 @@ export default function AboutPage() {
               </ScrollReveal>
 
               <ScrollReveal variant="fade-up" delay={100}>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-brandText-primary leading-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-brandText-primary leading-tight">
                   Rooted in Engineering Rigor and Technological Discipline.
                 </h2>
               </ScrollReveal>
 
               <ScrollReveal variant="fade-up" delay={200}>
-                <div className="space-y-4 text-base text-brandText-secondary leading-relaxed font-normal">
+                <div className="space-y-3 text-sm sm:text-base text-brandText-secondary leading-relaxed">
                   <p>
                     Established in Bengaluru, India's premier technology capital, GTSInfo is a specialized software services company focused on solving core enterprise engineering challenges.
                   </p>
@@ -117,21 +115,22 @@ export default function AboutPage() {
                   <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-primary/20 via-cyan-accent/15 to-transparent blur-xl -z-10" />
 
                   <div 
-                    className="rounded-3xl overflow-hidden border border-brandBorder shadow-card bg-white group cursor-pointer transition-all duration-300 hover:shadow-card-hover hover:border-primary/50"
+                    className="rounded-2xl overflow-hidden border border-brandBorder shadow-card bg-white group cursor-pointer transition-all duration-300 hover:shadow-card-hover hover:border-primary/40"
                     onClick={() => setMeetingModalOpen(true)}
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => e.key === 'Enter' && setMeetingModalOpen(true)}
                     aria-label="Inspect collaboration room photo"
                   >
-                    <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden bg-slate-900/5">
+                    {/* Fixed height so meeting room image is visible in full */}
+                    <div className="relative overflow-hidden bg-slate-100" style={{ height: '340px' }}>
                       <img
                         src={collaborationImg.src}
                         alt={collaborationImg.alt}
-                        className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
 
                       {/* Hover Zoom Prompt */}
                       <div className="absolute inset-0 bg-navy-950/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 text-white text-center backdrop-blur-[2px]">
@@ -164,20 +163,22 @@ export default function AboutPage() {
       </section>
 
       {/* 3. Mission & Vision — Distinctive Layout (Not Two Ordinary Cards) */}
-      <section className="py-24 lg:py-28 bg-softblue-50/70 text-brandText-primary relative border-t border-brandBorder">
+      <section className="py-16 lg:py-20 bg-softblue-50/70 text-brandText-primary relative border-t border-brandBorder">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <ScrollReveal variant="fade-up">
-            <div className="max-w-3xl mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-softblue-100 border border-softblue-200 text-primary text-xs font-bold uppercase tracking-wider mb-4">
-                <Target className="w-3.5 h-3.5" />
-                <span>Direction & Purpose</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brandText-primary leading-tight">
-                Our Mission & Vision.
-              </h2>
+            <div className="max-w-3xl mb-10">
+              <ScrollReveal variant="fade-up">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-softblue-100 border border-softblue-200 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+                  <Target className="w-3.5 h-3.5" />
+                  <span>Direction &amp; Purpose</span>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal variant="fade-up" delay={80}>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-brandText-primary leading-tight">
+                  Our Mission &amp; Vision.
+                </h2>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
 
           {/* Asymmetric Split Layout with Oversized Typography, Gradients, and Divider Lines */}
           <div className="relative rounded-3xl overflow-hidden border border-brandBorder bg-white shadow-card">
@@ -230,7 +231,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Workplace Section with Authentic Photographs (01, 04, 06) */}
-      <section id="workplace-gallery" className="py-24 lg:py-32 bg-white text-brandText-primary relative border-t border-brandBorder scroll-mt-24">
+      <section id="workplace-gallery" className="py-16 lg:py-20 bg-white text-brandText-primary relative border-t border-brandBorder scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-14">
@@ -241,11 +242,11 @@ export default function AboutPage() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal variant="fade-up" delay={100}>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brandText-primary leading-tight">
-                Authentic Bengaluru Workspace.
-              </h2>
-            </ScrollReveal>
+              <ScrollReveal variant="fade-up" delay={100}>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-brandText-primary leading-tight">
+                  Authentic Bengaluru Workspace.
+                </h2>
+              </ScrollReveal>
 
             <ScrollReveal variant="fade-up" delay={200}>
               <p className="text-base sm:text-lg text-brandText-secondary mt-3 leading-relaxed font-normal">
@@ -261,13 +262,13 @@ export default function AboutPage() {
       </section>
 
       {/* 5. Core Values */}
-      <section className="py-24 bg-softblue-50/70 text-brandText-primary border-t border-brandBorder">
+      <section className="py-16 lg:py-20 bg-softblue-50/70 text-brandText-primary border-t border-brandBorder">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-primary px-3 py-1 bg-softblue-100 rounded">
               Ethos & Principles
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-brandText-primary mt-4">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-brandText-primary mt-3">
               Core Principles Guiding Every Project.
             </h2>
           </div>

@@ -77,7 +77,7 @@ export default function ContactPage() {
     <div className="w-full overflow-hidden">
       
       {/* 1. Page Hero */}
-      <section className="bg-navy-950 text-white pt-32 pb-20 lg:pt-36 lg:pb-24 relative overflow-hidden border-b border-navy-800">
+      <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-0 right-1/4 w-[480px] h-[480px] bg-primary/20 rounded-full blur-[140px] animate-glow-pulse" />
           <div className="absolute bottom-0 left-10 w-[380px] h-[380px] bg-cyan-accent/15 rounded-full blur-[120px]" />
@@ -96,7 +96,7 @@ export default function ContactPage() {
             <ScrollReveal variant="fade-up">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-navy-900 text-cyan-accent text-xs font-bold uppercase tracking-widest mb-6 border border-cyan-accent/25">
                 <Mail className="w-3.5 h-3.5" />
-                <span>COMMUNICATION & ENQUIRIES • SRS 3.6</span>
+                <span>COMMUNICATION &amp; ENQUIRIES</span>
               </div>
             </ScrollReveal>
 
@@ -228,14 +228,6 @@ export default function ContactPage() {
                       <p className="text-xs text-brandText-secondary mt-1">
                         Please provide your contact information and details regarding your message.
                       </p>
-                    </div>
-
-                    {/* Demonstration Notice */}
-                    <div className="mb-6 p-3.5 bg-softblue-50 border border-softblue-200 rounded-2xl flex items-center gap-3 text-xs text-brandText-secondary">
-                      <Info className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span>
-                        <strong>Frontend Demonstration (SRS 3.6):</strong> Validates input client-side. In Phase 2, submissions route to PostgreSQL and notify hr@gtsinfo.in.
-                      </span>
                     </div>
 
                     {/* Success State */}

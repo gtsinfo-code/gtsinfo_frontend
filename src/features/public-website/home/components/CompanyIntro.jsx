@@ -9,7 +9,7 @@ export default function CompanyIntro() {
   const [introModalOpen, setIntroModalOpen] = useState(false);
 
   return (
-    <section id="company-intro" className="py-24 lg:py-32 bg-white text-brandText-primary relative overflow-hidden scroll-mt-24">
+    <section id="company-intro" className="py-20 lg:py-28 bg-white text-brandText-primary relative overflow-hidden scroll-mt-24 border-t border-brandBorder/60">
       {/* Background ambient lighting */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-softblue-100/60 rounded-full blur-3xl -z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pale-bg rounded-full blur-2xl -z-10 pointer-events-none" />
@@ -26,11 +26,11 @@ export default function CompanyIntro() {
               </div>
             </ScrollReveal>
 
-            {/* Mandatory Heading */}
+            {/* Section Heading per Creative Direction */}
             <ScrollReveal variant="fade-up" delay={100}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brandText-primary leading-[1.18]">
-                Technology With Purpose.{' '}
-                <span className="text-primary block mt-1">Engineering With Vision.</span>
+                Building Tomorrow{' '}
+                <span className="text-primary block mt-1">Through Technology.</span>
               </h2>
             </ScrollReveal>
 

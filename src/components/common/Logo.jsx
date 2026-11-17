@@ -1,22 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoImg from '../../assets/branding/gtsinfo-logo.png';
+import officialLogoImg from '../../assets/branding/gtsinfo-official-logo.png';
 
 /**
  * Reusable GTSInfo Logo Component
- * - Preserves authentic original proportions and crisp resolution.
- * - Integrates seamlessly into light surfaces without any artificial white patch or box.
- * - Supports size="sm" | "md" | "lg"
+ * - Single authentic logo used consistently across Navbar, Footer, and Portals.
+ * - Crisp, high-contrast, glowing neon-blue/white styling matching the reference design.
+ * - Supports size="sm" | "md" | "lg" | "hero"
  */
 export default function Logo({
+  variant = 'light',
   size = 'md',
   className = '',
   asLink = true,
 }) {
   const sizeClasses = {
     sm: 'h-8 sm:h-9',
-    md: 'h-9 sm:h-11',
-    lg: 'h-12 sm:h-14',
+    md: 'h-10 sm:h-11',
+    lg: 'h-11 sm:h-13',
+    hero: 'h-13 sm:h-16',
   };
 
   const selectedSize = sizeClasses[size] || sizeClasses.md;
@@ -24,9 +26,9 @@ export default function Logo({
   const content = (
     <div className={`inline-flex items-center transition-opacity hover:opacity-95 ${className}`}>
       <img
-        src={logoImg}
+        src={officialLogoImg}
         alt="GTSInfo - Software Services & Technology"
-        className={`${selectedSize} w-auto object-contain block select-none`}
+        className={`${selectedSize} w-auto object-contain block select-none drop-shadow-[0_2px_12px_rgba(0,140,255,0.35)]`}
         loading="eager"
       />
     </div>
@@ -37,7 +39,7 @@ export default function Logo({
       <Link
         to="/"
         aria-label="GTSInfo Home"
-        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-transform hover:scale-[1.01] active:scale-[0.99]"
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-transform hover:scale-[1.02] active:scale-[0.99] inline-block"
       >
         {content}
       </Link>

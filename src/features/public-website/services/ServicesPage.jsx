@@ -43,18 +43,20 @@ export default function ServicesPage() {
       const matched = SERVICES_DATA.find(s => s.slug === slug || s.id === slug);
       if (matched) {
         setActiveCategory('All');
-        setTimeout(() => {
+        // Multiple retries — element may be hidden by ScrollReveal's opacity:0 initial state
+        const attemptScroll = (delay) => setTimeout(() => {
           const el = document.getElementById(slug) || document.getElementById(matched.slug) || document.getElementById(matched.id);
           if (el) {
-            const navbarOffset = 95;
+            const navbarOffset = 100;
             const elementPosition = el.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
           }
-        }, 120);
+        }, delay);
+        const t1 = attemptScroll(80);
+        const t2 = attemptScroll(300);
+        const t3 = attemptScroll(600);
+        return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
       }
     }
   }, [location.hash]);
@@ -67,7 +69,7 @@ export default function ServicesPage() {
     <div className="w-full overflow-hidden">
       
       {/* 1. Services Hero */}
-      <section className="bg-navy-950 text-white pt-32 pb-20 lg:pt-36 lg:pb-24 relative overflow-hidden border-b border-navy-800">
+      <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-0 right-1/4 w-[480px] h-[480px] bg-primary/20 rounded-full blur-[140px] animate-glow-pulse" />
           <div className="absolute bottom-0 left-10 w-[380px] h-[380px] bg-cyan-accent/15 rounded-full blur-[120px]" />
@@ -137,21 +139,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 3. Catalog Filter & SRS Notice */}
-      <section className="py-20 bg-white text-brandText-primary">
+      {/* 3. Catalog Filter & Capabilities Explorer */}
+      <section className="py-16 lg:py-20 bg-white text-brandText-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <ScrollReveal variant="fade-up">
-            <div className="mb-10 p-4 bg-softblue-50 border border-softblue-200 rounded-2xl flex items-start gap-3 text-xs text-brandText-secondary">
-              <Info className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-bold text-brandText-primary mb-0.5">Development Notice (SRS Section 3.3)</p>
-                <p>The service offerings presented below represent standard software engineering services designed to model the exact Phase 1 catalog structure. Final service naming and descriptive texts remain subject to formal GTSInfo management approval.</p>
-              </div>
-            </div>
-
             {/* Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2 mb-16">
+            <div className="flex flex-wrap items-center gap-2 mb-14">
               <span className="text-xs font-bold uppercase tracking-wider text-brandText-secondary mr-2">
                 Domain Filter:
               </span>
@@ -181,7 +175,8 @@ export default function ServicesPage() {
                 <div
                   key={service.id}
                   id={service.slug}
-                  className="scroll-mt-32"
+                  className="scroll-mt-28"
+                  style={{ scrollMarginTop: '7rem' }}
                 >
                   <ScrollReveal variant={isEven ? 'fade-up' : 'fade-up'} delay={100}>
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
