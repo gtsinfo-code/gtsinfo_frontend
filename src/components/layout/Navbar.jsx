@@ -49,7 +49,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [authDropdownOpen, setAuthDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const dropdownRef = useRef(null);
   const servicesDropdownRef = useRef(null);
@@ -81,6 +81,7 @@ export default function Navbar() {
     setMobileMenuOpen(false);
     setAuthDropdownOpen(false);
     setServicesDropdownOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname, location.hash]);
 
   // Click outside listener for dropdowns
@@ -356,7 +357,13 @@ export default function Navbar() {
           {/* 4. Mobile Hamburger Toggle */}
           <div className="flex lg:hidden items-center space-x-2">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => {
+                const next = !mobileMenuOpen;
+                setMobileMenuOpen(next);
+                if (!next) {
+                  setMobileServicesOpen(false);
+                }
+              }}
               className="p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#008CFF]"
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
@@ -375,31 +382,39 @@ export default function Navbar() {
               if (link.name === 'Services') {
                 return (
                   <div key={link.path} className="space-y-1">
-                    <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-white/5">
-                      <NavLink
-                        to={link.path}
-                        className={({ isActive }) =>
-                          `text-sm font-semibold ${isActive ? 'text-[#008CFF] font-bold' : 'text-white'}`
-                        }
-                      >
-                        Services Overview
-                      </NavLink>
-                      <button
-                        type="button"
-                        onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                        className="p-1 text-white/70"
-                        aria-label="Toggle Services List"
-                      >
-                        <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-[#008CFF]' : ''}`} />
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all cursor-pointer ${
+                        location.pathname.startsWith('/services') || mobileServicesOpen
+                          ? 'bg-[#0B3D70] text-white font-bold'
+                          : 'text-white/80 hover:bg-white/5 hover:text-white font-semibold'
+                      }`}
+                      aria-expanded={mobileServicesOpen}
+                    >
+                      <span className="text-sm">Services</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          mobileServicesOpen ? 'rotate-180 text-[#008CFF]' : 'text-white/60'
+                        }`}
+                      />
+                    </button>
 
                     {mobileServicesOpen && (
-                      <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-[#008CFF]/40 ml-4">
+                      <div className="pl-3 pr-1 py-1 space-y-1 border-l-2 border-[#008CFF]/50 ml-4 animate-fade-in">
+                        <Link
+                          to="/services"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center justify-between px-3 py-2 text-xs font-bold text-[#008CFF] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        >
+                          <span>All Services Overview</span>
+                          <span>→</span>
+                        </Link>
                         {SERVICES_NAV_ITEMS.map((item) => (
                           <Link
                             key={item.path}
                             to={item.path}
+                            onClick={() => setMobileMenuOpen(false)}
                             className="block px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                           >
                             {item.name}
