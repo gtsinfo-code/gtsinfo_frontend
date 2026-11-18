@@ -22,6 +22,7 @@ import {
 } from '../../../constants/companyInfo';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
 import { sendContactEmail, validateContactForm, CONTACT_RECIPIENT_EMAIL } from '../../../services/contactService';
+import PageSEO from '../../../components/common/PageSEO';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function ContactPage() {
@@ -80,6 +81,11 @@ export default function ContactPage() {
 
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title="Contact Us & Bengaluru Office Directions"
+        description="Connect with GTSInfo Headquarters in Mahalakshmipuram Layout, Bengaluru. Contact us for software engineering solutions, enterprise partnerships, or hiring."
+        canonicalPath="/contact"
+      />
       
       {/* 1. Page Hero */}
       <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">

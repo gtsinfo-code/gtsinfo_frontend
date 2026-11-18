@@ -20,6 +20,7 @@ import { JOBS_DATA } from '../../../data/jobsData';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
 import { JOB_APPLICATION_FORM_URL } from '../../../config/integrations';
 import ContactCTA from '../home/components/ContactCTA';
+import PageSEO from '../../../components/common/PageSEO';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function CareersPage() {
@@ -62,6 +63,11 @@ export default function CareersPage() {
 
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title="Careers & Engineering Opportunities in Bengaluru"
+        description="Explore technology careers at GTSInfo in Bengaluru. Discover life at GTSInfo, modern office spaces, collaborative culture, and open software engineering roles."
+        canonicalPath="/careers"
+      />
       
       {/* 1. Careers Hero */}
       <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">

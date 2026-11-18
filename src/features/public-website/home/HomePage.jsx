@@ -1,4 +1,5 @@
 import React from 'react';
+import PageSEO from '../../../components/common/PageSEO';
 import Hero from './components/Hero';
 import CompanyIntro from './components/CompanyIntro';
 import ServicesOverview from './components/ServicesOverview';
@@ -6,20 +7,15 @@ import TechExpertise from './components/TechExpertise';
 import FeaturedCareers from './components/FeaturedCareers';
 import ContactCTA from './components/ContactCTA';
 
-/**
- * GTSInfo Public Home Page
- * Implements strict compliance with SRS Version 1.2 Section 3.1:
- * - Company name and logo
- * - Company introduction (featuring authentic facility photograph 02-open-office-wide-view.jpg)
- * - Overview of major services (Enterprise Dev, Cloud, Data, QA)
- * - Technical expertise and business capabilities (3-tier architecture & core capabilities)
- * - Featured job opportunities (verified active vacancies from jobs catalog)
- * - Contact information (corporate office details, direct email, location)
- * - Navigation to main website sections
- */
 export default function HomePage() {
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title="Enterprise Software Services & Engineering"
+        description="GTSInfo is a software services and technology firm in Bengaluru, architecting full-stack web applications, cloud DevOps, data pipelines, and quality assurance."
+        canonicalPath="/"
+      />
+
       {/* 1. SRS 3.1: Hero Experience & Core Navigation */}
       <Hero />
 

@@ -19,6 +19,7 @@ import {
 import { SERVICES_DATA } from '../../../data/servicesData';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
 import ContactCTA from '../home/components/ContactCTA';
+import PageSEO from '../../../components/common/PageSEO';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 const iconMap = {
@@ -34,32 +35,30 @@ export default function ServicesPage() {
   const bannerImg = COMPANY_AUTHENTIC_IMAGES.servicesArchitecture;
   const location = useLocation();
 
-  const categories = ['All', ...new Set(SERVICES_DATA.map(s => s.category))];
-
-  // Auto-switch to 'All' category and smooth scroll if arriving via deep-link hash
-  useEffect(() => {
-    if (location.hash) {
-      const slug = location.hash.replace('#', '');
-      const matched = SERVICES_DATA.find(s => s.slug === slug || s.id === slug);
-      if (matched) {
-        setActiveCategory('All');
-        // Multiple retries — element may be hidden by ScrollReveal's opacity:0 initial state
-        const attemptScroll = (delay) => setTimeout(() => {
-          const el = document.getElementById(slug) || document.getElementById(matched.slug) || document.getElementById(matched.id);
-          if (el) {
-            const navbarOffset = 100;
-            const elementPosition = el.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-          }
-        }, delay);
-        const t1 = attemptScroll(80);
-        const t2 = attemptScroll(300);
-        const t3 = attemptScroll(600);
-        return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-      }
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Enterprise Software Engineering & Cloud Infrastructure",
+    "provider": {
+      "@type": "Corporation",
+      "name": "GTSInfo",
+      "url": "https://gtsinfo.vercel.app/"
+    },
+    "areaServed": "Global",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "GTSInfo Technology Services Catalog",
+      "itemListElement": SERVICES_DATA.map((s, index) => ({
+        "@type": "Offer",
+        "position": index + 1,
+        "itemOffered": {
+          "@type": "Service",
+          "name": s.title,
+          "description": s.shortDescription
+        }
+      }))
     }
-  }, [location.hash]);
+  };
 
   const filteredServices = activeCategory === 'All'
     ? SERVICES_DATA
@@ -67,6 +66,12 @@ export default function ServicesPage() {
 
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title="Software Engineering & Cloud Services Catalog"
+        description="Explore GTSInfo software services: full-stack enterprise web development, cloud DevOps automation, data engineering pipelines, and automated QA testing."
+        canonicalPath="/services"
+        schema={servicesSchema}
+      />
       
       {/* 1. Services Hero */}
       <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">

@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { JOBS_DATA } from '../../../data/jobsData';
 import { JOB_APPLICATION_FORM_URL } from '../../../config/integrations';
+import PageSEO from '../../../components/common/PageSEO';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function JobDetailsPage() {
@@ -28,8 +29,41 @@ export default function JobDetailsPage() {
 
   const relatedJobs = JOBS_DATA.filter((j) => j.id !== job.id && j.status === 'open').slice(0, 3);
 
+  const jobPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": job.title,
+    "description": job.summary,
+    "datePosted": "2026-11-01",
+    "validThrough": job.deadline,
+    "employmentType": job.employmentType === 'Full-time' ? 'FULL_TIME' : 'INTERN',
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "GTSInfo",
+      "sameAs": "https://gtsinfo.vercel.app/",
+      "logo": "https://gtsinfo.vercel.app/favlogo-share.png"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2nd Floor, 7, 1st Main Road, Mahalakshmipuram Layout",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "postalCode": "560086",
+        "addressCountry": "IN"
+      }
+    }
+  };
+
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title={`${job.title} | Career Openings`}
+        description={`${job.title} in Bengaluru at GTSInfo. ${job.summary}`}
+        canonicalPath={`/jobs/${job.id}`}
+        schema={jobPostingSchema}
+      />
       
       {/* 1. Job Header Banner */}
       <section className="bg-navy-950 text-white pt-32 pb-16 lg:pt-36 lg:pb-20 relative overflow-hidden border-b border-navy-800">

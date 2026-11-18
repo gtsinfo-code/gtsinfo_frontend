@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { JOBS_DATA } from '../../../data/jobsData';
 import { JOB_APPLICATION_FORM_URL } from '../../../config/integrations';
+import PageSEO from '../../../components/common/PageSEO';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function JobListingsPage() {
@@ -66,6 +67,11 @@ export default function JobListingsPage() {
 
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title="Open Software Engineering Job Listings"
+        description="Search active software engineering vacancies at GTSInfo Bengaluru. Explore roles in Full Stack Development, Cloud DevOps, Quality Automation, and internships."
+        canonicalPath="/jobs"
+      />
 
       {/* 1. Page Header */}
       <section className="bg-navy-950 text-white pt-32 pb-20 lg:pt-36 lg:pb-24 relative overflow-hidden border-b border-navy-800">

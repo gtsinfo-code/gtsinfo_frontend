@@ -17,6 +17,10 @@
 
   <meta name="theme-color" content="#071B36" />
 
+  <!-- Canonical URL & Indexation -->
+  <link rel="canonical" href="https://gtsinfo.vercel.app/" id="canonical-tag" />
+  <meta name="robots" content="index, follow" />
+
   <!-- Website Title -->
   <title>GTSInfo | Software Services & Technology</title>
 
@@ -39,6 +43,55 @@
   <meta name="twitter:description"
     content="Engineering the Future. Together. Enterprise technology solutions and career opportunities." />
   <meta name="twitter:image" content="https://gtsinfo.vercel.app/favlogo-share.png" />
+
+  <!-- JSON-LD Structured Data: Organization & LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Corporation", "LocalBusiness"],
+        "@id": "https://gtsinfo.vercel.app/#organization",
+        "name": "GTSInfo",
+        "alternateName": "GTS Software Services & Technology",
+        "url": "https://gtsinfo.vercel.app/",
+        "logo": "https://gtsinfo.vercel.app/favlogo-share.png",
+        "image": "https://gtsinfo.vercel.app/og-image.png",
+        "description": "GTSInfo delivers enterprise full-stack software development, cloud infrastructure, automated QA testing, and data engineering solutions.",
+        "email": "hr@gtsinfo.in",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2nd Floor, 7, 1st Main Road, Mahalakshmipuram Layout",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "Karnataka",
+          "postalCode": "560086",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 13.0079767,
+          "longitude": 77.5426662
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:30",
+          "closes": "18:30"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://gtsinfo.vercel.app/#website",
+        "url": "https://gtsinfo.vercel.app/",
+        "name": "GTSInfo",
+        "description": "Software Services & Technology - Engineering the Future.",
+        "publisher": {
+          "@id": "https://gtsinfo.vercel.app/#organization"
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- Google Fonts - Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

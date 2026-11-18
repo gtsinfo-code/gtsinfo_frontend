@@ -1,0 +1,14 @@
+# GTSInfo Robots.txt
+# https://gtsinfo.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Exclude private authentication/portal routes from indexing
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+
+# Sitemap
+Sitemap: https://gtsinfo.vercel.app/sitemap.xml

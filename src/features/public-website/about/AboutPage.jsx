@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import WorkplaceGallery from './components/WorkplaceGallery';
 import ContactCTA from '../home/components/ContactCTA';
+import PageSEO from '../../../components/common/PageSEO';
 import { COMPANY_INFO } from '../../../constants/companyInfo';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
@@ -26,6 +27,11 @@ export default function AboutPage() {
 
   return (
     <div className="w-full overflow-hidden">
+      <PageSEO
+        title="About Us & Leadership Culture"
+        description="Learn about GTSInfo's corporate mission, engineering culture, verified Mahalakshmipuram technology center in Bengaluru, and delivery methodology."
+        canonicalPath="/about"
+      />
       
       {/* 1. Page Hero: "People. Purpose. Technology." */}
       <section className="bg-navy-950 text-white pt-36 pb-16 lg:pt-44 lg:pb-20 relative overflow-hidden border-b border-navy-800">
