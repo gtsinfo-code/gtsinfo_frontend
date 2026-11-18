@@ -1,0 +1,29 @@
+declare module '*.png' {
+  const content: import('next/image').StaticImageData | string;
+  export default content;
+}
+
+declare module '*.jpg' {
+  const content: import('next/image').StaticImageData | string;
+  export default content;
+}
+
+declare module '*.jpeg' {
+  const content: import('next/image').StaticImageData | string;
+  export default content;
+}
+
+declare module '*.svg' {
+  const content: React.FunctionComponent<React.SVGProps<SVGSVGElement>> | string;
+  export default content;
+}
+
+declare module '*.webp' {
+  const content: import('next/image').StaticImageData | string;
+  export default content;
+}
+
+declare module '*.mp4' {
+  const content: string;
+  export default content;
+}

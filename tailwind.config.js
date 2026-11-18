@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -47,8 +50,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Poppins', 'system-ui', '-apple-system', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
+        sans: ['var(--font-poppins)', 'Poppins', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
         mono: ['JetBrains Mono', 'Menlo', 'monospace'],
       },
       boxShadow: {
@@ -107,4 +110,4 @@ export default {
     },
   },
   plugins: [],
-}
+};
