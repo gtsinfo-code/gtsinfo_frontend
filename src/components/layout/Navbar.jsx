@@ -293,7 +293,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setAuthDropdownOpen(!authDropdownOpen)}
-                className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold tracking-wider uppercase rounded-full border transition-all duration-200 cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-full border transition-all duration-200 cursor-pointer ${
                   authDropdownOpen
                     ? 'border-[#008CFF] text-white bg-white/10 shadow-[0_0_14px_rgba(0,140,255,0.3)]'
                     : 'border-white/25 text-white/90 hover:border-white/50 hover:text-white bg-white/5 hover:bg-white/10 backdrop-blur-md'
@@ -344,7 +344,7 @@ export default function Navbar() {
             {/* Main Primary CTA: Electric Blue Pill Button */}
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-[0_4px_22px_rgba(0,107,255,0.45)] hover:shadow-[0_6px_30px_rgba(0,107,255,0.7)] hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold text-white shadow-[0_4px_22px_rgba(0,107,255,0.45)] hover:shadow-[0_6px_30px_rgba(0,107,255,0.7)] hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 cursor-pointer"
               style={{
                 background: 'linear-gradient(90deg, #006BFF 0%, #0878E8 100%)',
               }}
@@ -445,7 +445,7 @@ export default function Navbar() {
             })}
 
             <div className="pt-4 border-t border-white/10 my-3 space-y-2.5">
-              <p className="px-4 text-[11px] font-bold text-[#DCEEFF] uppercase tracking-wider">Candidate Portal Access</p>
+              <p className="px-4 text-[11px] font-bold text-[#DCEEFF] tracking-wide">Candidate Portal Access</p>
               <div className="grid grid-cols-2 gap-2.5 px-1">
                 <Link
                   to="/login"
@@ -467,7 +467,7 @@ export default function Navbar() {
             <div className="pt-3 px-1">
               <Link
                 to="/contact"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all text-center"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full text-white text-xs font-bold shadow-md transition-all text-center"
                 style={{
                   background: 'linear-gradient(90deg, #006BFF 0%, #0878E8 100%)',
                 }}

@@ -124,7 +124,7 @@ export default function ServicesOverview() {
                       className="inline-flex items-center gap-1 text-xs font-bold text-primary group-hover:text-electric transition-colors"
                       aria-label={`View details for ${item.title}`}
                     >
-                      <span>Explore</span>
+                      <span>Learn More</span>
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>

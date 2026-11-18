@@ -15,9 +15,9 @@ export const SERVICES_DATA = [
     shortDescription: "Custom end-to-end software solutions engineered for scalability, security, and enterprise integration.",
     fullDescription: "GTSInfo builds scalable, mission-critical enterprise systems designed to streamline business workflows, modernize legacy operations, and support high-volume transaction processing with robust architectural patterns.",
     capabilities: [
-      "Custom Full-Stack Web Applications",
+      "Full-stack web applications",
       "Microservices & Event-Driven Architecture",
-      "Legacy System Modernization & Migration",
+      "Legacy system modernization",
       "Secure API Design & System Integration",
       "Enterprise Database Design & Performance Tuning"
     ],
@@ -36,7 +36,7 @@ export const SERVICES_DATA = [
     fullDescription: "We assist organizations in architecting resilient cloud environments, automating build and deployment workflows, and ensuring maximum uptime through modern infrastructure management best practices.",
     capabilities: [
       "Cloud Architecture & Migration Planning",
-      "CI/CD Pipeline Automation & Tooling",
+      "CI/CD pipeline automation",
       "Containerization & Orchestration",
       "Infrastructure Monitoring & Reliability Engineering",
       "Cloud Cost Optimization & Security Compliance"
@@ -57,7 +57,7 @@ export const SERVICES_DATA = [
     capabilities: [
       "Data Pipeline & ETL Workflow Engineering",
       "Relational & Dimensional Data Modeling",
-      "Business Intelligence Dashboards & Reporting",
+      "Business intelligence and reporting",
       "Data Governance & Quality Assurance",
       "Secure Analytics Storage & Access Control"
     ],

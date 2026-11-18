@@ -109,7 +109,6 @@ export default function Hero() {
               <h1
                 className="font-extrabold text-white tracking-[-0.03em] leading-[1.08]"
                 style={{
-                  fontFamily: "'Manrope', 'Plus Jakarta Sans', 'Inter', sans-serif",
                   fontSize: 'clamp(2.5rem, 4.8vw + 0.5rem, 4.5rem)',
                 }}
               >
