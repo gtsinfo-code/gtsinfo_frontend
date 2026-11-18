@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import officialLogoImg from '../../assets/branding/gtsinfo-official-logo.png';
+import officialLogoImg from '../../assets/branding/GTS_Software_Services_Logo_Transparent.png';
+/**
 
 /**
  * Reusable GTSInfo Logo Component

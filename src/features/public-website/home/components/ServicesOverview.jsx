@@ -76,11 +76,6 @@ export default function ServicesOverview() {
                       : 'border-brandBorder shadow-subtle hover:border-softblue-300'
                   }`}
                 >
-                  {/* Oversized Subtle Background Numeral */}
-                  <span className="absolute -bottom-4 right-4 text-7xl sm:text-8xl font-extrabold text-softblue-100 font-mono select-none pointer-events-none group-hover:text-primary/10 transition-colors">
-                    {numeral}
-                  </span>
-
                   {/* Top Bar: Icon & Category */}
                   <div className="flex items-center justify-between mb-6 relative z-10">
                     <div className="w-13 h-13 rounded-xl bg-softblue-100 text-primary flex items-center justify-center p-3 border border-softblue-200 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-xs">
