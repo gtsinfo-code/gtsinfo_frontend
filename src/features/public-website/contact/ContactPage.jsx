@@ -14,10 +14,14 @@ import {
   ZoomIn,
   X,
   Sparkles,
-  PhoneCall
+  PhoneCall,
+  RotateCcw
 } from 'lucide-react';
-import { COMPANY_INFO } from '../../../constants/companyInfo';
+import { 
+  COMPANY_INFO 
+} from '../../../constants/companyInfo';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
+import { sendContactEmail, validateContactForm, CONTACT_RECIPIENT_EMAIL } from '../../../services/contactService';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function ContactPage() {
@@ -25,6 +29,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
@@ -34,29 +39,12 @@ export default function ContactPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  // Exact Google Maps verified link
-  const exactMapsUrl = "https://www.google.com/maps/place/2nd+Floor,+7,+1st+Main+Rd,+Bovipalya,+Mahalakshmipuram,+Bengaluru,+Karnataka+560086/@13.0079767,77.5426662,859m/data=!3m2!1e3!4b1!4m5!3m4!1s0x3bae3d9e45994e5f:0xe2c814ff1997f136!8m2!3d13.0079767!4d77.5426662?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D";
+  // Universal cross-platform Google Maps verified link (opens exact Mahalakshmipuram location on mobile & laptop)
+  const exactMapsUrl = COMPANY_INFO.mapsUrl;
 
-  const validate = () => {
-    const errs = {};
-    if (!formData.name.trim()) errs.name = 'Full Name is required.';
-    if (!formData.email.trim()) {
-      errs.email = 'Email Address is required.';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errs.email = 'Please provide a valid email format.';
-    }
-    if (!formData.subject.trim()) errs.subject = 'Subject is required.';
-    if (!formData.message.trim()) {
-      errs.message = 'Message content is required.';
-    } else if (formData.message.trim().length < 10) {
-      errs.message = 'Message must be at least 10 characters.';
-    }
-    return errs;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validate();
+    const validationErrors = validateContactForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -65,12 +53,29 @@ export default function ContactPage() {
     setErrors({});
     setIsSubmitting(true);
 
-    // Frontend demonstration validation (SRS Section 3.6)
-    setTimeout(() => {
+    try {
+      await sendContactEmail(formData);
       setIsSubmitting(false);
       setIsSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 700);
+    } catch (err) {
+      console.error('Failed to send contact enquiry:', err);
+      setIsSubmitting(false);
+      setErrors({
+        form: `Unable to send message right now. Please verify your connection or email us directly at ${CONTACT_RECIPIENT_EMAIL}.`
+      });
+    }
+  };
+
+  const handleResetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    });
+    setErrors({});
+    setIsSuccess(false);
   };
 
   return (
@@ -230,21 +235,27 @@ export default function ContactPage() {
                       </p>
                     </div>
 
-                    {/* Success State */}
+                    {/* Direct Success / Submission State */}
                     {isSuccess ? (
-                      <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-3xl text-center space-y-4 animate-fade-in my-6">
-                        <CheckCircle2 className="w-14 h-14 text-emerald-600 mx-auto" />
-                        <h4 className="text-xl font-bold text-emerald-900">Enquiry Form Validated!</h4>
-                        <p className="text-xs text-emerald-800 leading-relaxed max-w-md mx-auto">
-                          Thank you for reaching out to GTSInfo. In the live production system, your message is stored in the database for administrative review and dispatched to hr@gtsinfo.in.
+                      <div className="p-7 sm:p-8 bg-emerald-50/70 border border-emerald-200 rounded-3xl text-center space-y-4 animate-fade-in my-4">
+                        <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-200 shadow-xs">
+                          <CheckCircle2 className="w-8 h-8 text-emerald-600" />
+                        </div>
+                        <h4 className="text-xl font-bold text-slate-900">Message Sent Successfully!</h4>
+                        <p className="text-sm font-medium text-slate-700 leading-relaxed max-w-md mx-auto">
+                          Thank you for reaching out to GTSInfo. Our team has received your enquiry and will contact you shortly.
                         </p>
-                        <button
-                          type="button"
-                          onClick={() => setIsSuccess(false)}
-                          className="mt-4 px-6 py-2.5 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors"
-                        >
-                          Send Another Test Message
-                        </button>
+
+                        <div className="pt-2">
+                          <button
+                            type="button"
+                            onClick={handleResetForm}
+                            className="px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-navy-900 hover:bg-navy-800 text-white transition-all shadow-sm inline-flex items-center gap-2 cursor-pointer"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            <span>Send Another Message</span>
+                          </button>
+                        </div>
                       </div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -293,6 +304,31 @@ export default function ContactPage() {
                           )}
                         </div>
 
+                        {/* Phone Number (Optional) */}
+                        <div>
+                          <div className="flex items-center justify-between mb-1.5">
+                            <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary">
+                              Phone Number
+                            </label>
+                            <span className="text-[11px] text-slate-400 font-medium">Optional</span>
+                          </div>
+                          <input
+                            type="tel"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            placeholder="e.g. +91 98765 43210"
+                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
+                              errors.phone ? 'border-red-400' : 'border-brandBorder'
+                            }`}
+                          />
+                          {errors.phone && (
+                            <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
+                              <AlertCircle className="w-3 h-3" />
+                              <span>{errors.phone}</span>
+                            </p>
+                          )}
+                        </div>
+
                         {/* Subject */}
                         <div>
                           <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1.5">
@@ -337,18 +373,28 @@ export default function ContactPage() {
                           )}
                         </div>
 
+                        {errors.form && (
+                          <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center gap-2">
+                            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                            <span>{errors.form}</span>
+                          </div>
+                        )}
+
                         {/* Submit CTA */}
-                        <div className="pt-2">
+                        <div className="pt-1">
                           <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="btn-shimmer w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-primary to-electric text-white shadow-[0_4px_22px_rgba(8,120,232,0.45)] hover:shadow-[0_6px_28px_rgba(8,120,232,0.6)] disabled:opacity-50 cursor-pointer"
+                            className="btn-shimmer w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-primary to-electric text-white shadow-[0_4px_22px_rgba(8,120,232,0.45)] hover:shadow-[0_6px_28px_rgba(8,120,232,0.6)] disabled:opacity-50 cursor-pointer transition-all duration-200 hover:scale-[1.01]"
                           >
                             {isSubmitting ? (
-                              <span>Validating Enquiry...</span>
+                              <span className="inline-flex items-center gap-2">
+                                <span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin inline-block" />
+                                <span>Sending Message...</span>
+                              </span>
                             ) : (
                               <>
-                                <span>Submit Enquiry</span>
+                                <span>Send Message</span>
                                 <Send className="w-4 h-4" />
                               </>
                             )}

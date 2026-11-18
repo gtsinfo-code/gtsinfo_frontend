@@ -7,9 +7,11 @@ import {
   ArrowRight,
   Users,
   ChevronRight,
-  Info
+  Info,
+  ExternalLink
 } from 'lucide-react';
 import { JOBS_DATA } from '../../../../data/jobsData';
+import { JOB_APPLICATION_FORM_URL } from '../../../../config/integrations';
 import ScrollReveal from '../../../../components/motion/ScrollReveal';
 
 export default function FeaturedCareers() {
@@ -100,17 +102,23 @@ export default function FeaturedCareers() {
                 </div>
 
                 {/* Card Action Link */}
-                <div className="pt-4 border-t border-softblue-200/80 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-slate-400">
-                    ID: {job.id.slice(-6)}
-                  </span>
+                <div className="pt-4 border-t border-softblue-200/80 flex items-center justify-between gap-2">
                   <Link
                     to={`/jobs/${job.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-electric transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-primary transition-colors"
                   >
                     <span>View Role</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </Link>
+                  <a
+                    href={JOB_APPLICATION_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white transition-all shadow-xs"
+                  >
+                    <span>Apply Now</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
               </div>
             </ScrollReveal>

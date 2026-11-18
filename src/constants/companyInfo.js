@@ -19,6 +19,8 @@ export const COMPANY_INFO = {
     country: "India",
     full: "2nd Floor, 7, 1st Main Road, Mahalakshmipuram Layout, Mahalakshmi Layout, Bengaluru, Karnataka 560086, India"
   },
+  // Universal cross-platform Google Maps location link (opens exact Mahalakshmipuram coordinates 13.0079767, 77.5426662 on both mobile and laptop)
+  mapsUrl: "https://www.google.com/maps?q=13.0079767,77.5426662",
   mission: "To deliver reliable, scalable, and forward-looking software engineering solutions that empower modern enterprises in their digital journey.",
   vision: "To be a recognized technology partner known for engineering excellence, integrity, and sustainable digital solutions.",
   coreValues: [

@@ -14,46 +14,19 @@ import {
   Briefcase,
   ChevronRight,
   ShieldCheck,
-  X,
-  Send,
-  Upload
+  ExternalLink
 } from 'lucide-react';
 import { JOBS_DATA } from '../../../data/jobsData';
+import { JOB_APPLICATION_FORM_URL } from '../../../config/integrations';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function JobDetailsPage() {
   const { id } = useParams();
-  const [showApplyModal, setShowApplyModal] = useState(false);
-  const [applyForm, setApplyForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    resume: null,
-    notes: ''
-  });
-  const [applySubmitted, setApplySubmitted] = useState(false);
-  const [applyErrors, setApplyErrors] = useState({});
 
   const job = JOBS_DATA.find((j) => j.id === id) || JOBS_DATA[0];
   const isOpen = job.status === 'open';
 
   const relatedJobs = JOBS_DATA.filter((j) => j.id !== job.id && j.status === 'open').slice(0, 3);
-
-  const handleApplySubmit = (e) => {
-    e.preventDefault();
-    const errs = {};
-    if (!applyForm.name.trim()) errs.name = 'Full name is required.';
-    if (!applyForm.email.trim() || !applyForm.email.includes('@')) errs.email = 'Valid email is required.';
-    if (!applyForm.phone.trim()) errs.phone = 'Phone number is required.';
-
-    if (Object.keys(errs).length > 0) {
-      setApplyErrors(errs);
-      return;
-    }
-
-    setApplyErrors({});
-    setApplySubmitted(true);
-  };
 
   return (
     <div className="w-full overflow-hidden">
@@ -114,16 +87,15 @@ export default function JobDetailsPage() {
             {/* Quick Action */}
             <div className="flex-shrink-0">
               {isOpen ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowApplyModal(true);
-                    setApplySubmitted(false);
-                  }}
+                <a
+                  href={JOB_APPLICATION_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider bg-primary hover:bg-electric text-white shadow-glow transition-all duration-300 hover:scale-[1.02]"
                 >
                   <span>Apply for this Role</span>
-                </button>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               ) : (
                 <button
                   disabled
@@ -209,19 +181,18 @@ export default function JobDetailsPage() {
               <div className="p-8 rounded-3xl bg-softblue-50/80 border border-brandBorder flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                   <h4 className="text-lg font-bold text-brandText-primary">Ready to apply?</h4>
-                  <p className="text-xs text-brandText-secondary mt-1">Submit your details to start your application process.</p>
+                  <p className="text-xs text-brandText-secondary mt-1">Submit your details via the official job application form.</p>
                 </div>
                 {isOpen ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowApplyModal(true);
-                      setApplySubmitted(false);
-                    }}
-                    className="px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white shadow-sm transition-all flex-shrink-0"
+                  <a
+                    href={JOB_APPLICATION_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white shadow-sm transition-all flex-shrink-0 inline-flex items-center justify-center gap-2"
                   >
-                    Apply Now
-                  </button>
+                    <span>Apply Now</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 ) : (
                   <span className="text-xs font-semibold text-slate-400">Applications Closed</span>
                 )}
@@ -271,16 +242,15 @@ export default function JobDetailsPage() {
 
                   <div className="pt-4 border-t border-brandBorder">
                     {isOpen ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowApplyModal(true);
-                          setApplySubmitted(false);
-                        }}
-                        className="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white shadow-sm transition-all text-center"
+                      <a
+                        href={JOB_APPLICATION_FORM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white shadow-sm transition-all text-center inline-flex items-center justify-center gap-2"
                       >
-                        Apply for this Role
-                      </button>
+                        <span>Apply for this Role</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     ) : (
                       <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 text-center font-medium">
                         This position has expired.
@@ -309,117 +279,6 @@ export default function JobDetailsPage() {
 
         </div>
       </section>
-
-      {/* 3. Demonstration Apply Modal */}
-      {showApplyModal && (
-        <div
-          className="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fade-in"
-          onClick={() => setShowApplyModal(false)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="relative max-w-lg w-full bg-white rounded-3xl overflow-hidden shadow-2xl border border-brandBorder animate-slide-up p-6 sm:p-8"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between pb-4 border-b border-brandBorder mb-6">
-              <div>
-                <h3 className="text-lg font-bold text-brandText-primary">Apply for Position</h3>
-                <p className="text-xs text-brandText-secondary line-clamp-1">{job.title}</p>
-              </div>
-              <button
-                onClick={() => setShowApplyModal(false)}
-                className="p-1 rounded-lg hover:bg-softblue-50 text-slate-400 hover:text-brandText-primary transition-colors"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {applySubmitted ? (
-              <div className="text-center py-8 space-y-4 animate-fade-in">
-                <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto" />
-                <h4 className="text-xl font-bold text-brandText-primary">Application Validated!</h4>
-                <p className="text-xs text-brandText-secondary leading-relaxed max-w-sm mx-auto">
-                  Thank you, <strong>{applyForm.name}</strong>. In Phase 2, your application, resume, and credentials will be saved directly into PostgreSQL and routed to HR.
-                </p>
-                <button
-                  onClick={() => setShowApplyModal(false)}
-                  className="mt-4 px-6 py-2.5 rounded-xl bg-primary text-white text-xs font-bold"
-                >
-                  Close Window
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleApplySubmit} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={applyForm.name}
-                    onChange={(e) => setApplyForm({ ...applyForm, name: e.target.value })}
-                    placeholder="Enter your full name"
-                    className="w-full px-4 py-2.5 bg-softblue-50 border border-brandBorder rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-primary text-brandText-primary"
-                  />
-                  {applyErrors.name && <p className="text-[11px] text-red-500 mt-1">{applyErrors.name}</p>}
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={applyForm.email}
-                    onChange={(e) => setApplyForm({ ...applyForm, email: e.target.value })}
-                    placeholder="name@example.com"
-                    className="w-full px-4 py-2.5 bg-softblue-50 border border-brandBorder rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-primary text-brandText-primary"
-                  />
-                  {applyErrors.email && <p className="text-[11px] text-red-500 mt-1">{applyErrors.email}</p>}
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1">
-                    Phone / Mobile Number *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={applyForm.phone}
-                    onChange={(e) => setApplyForm({ ...applyForm, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
-                    className="w-full px-4 py-2.5 bg-softblue-50 border border-brandBorder rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-primary text-brandText-primary"
-                  />
-                  {applyErrors.phone && <p className="text-[11px] text-red-500 mt-1">{applyErrors.phone}</p>}
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1">
-                    Resume / CV Document
-                  </label>
-                  <div className="border border-dashed border-brandBorder p-3 rounded-xl text-center bg-softblue-50/50">
-                    <Upload className="w-5 h-5 text-slate-400 mx-auto mb-1" />
-                    <span className="text-[11px] text-slate-500">PDF, DOCX up to 5MB</span>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
-                  >
-                    Submit Application
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
 
     </div>
   );

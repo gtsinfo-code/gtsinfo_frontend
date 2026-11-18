@@ -13,10 +13,12 @@ import {
   Info,
   ChevronRight,
   ShieldCheck,
-  FileCheck
+  FileCheck,
+  ExternalLink
 } from 'lucide-react';
 import { JOBS_DATA } from '../../../data/jobsData';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
+import { JOB_APPLICATION_FORM_URL } from '../../../config/integrations';
 import ContactCTA from '../home/components/ContactCTA';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
@@ -95,9 +97,27 @@ export default function CareersPage() {
             </ScrollReveal>
 
             <ScrollReveal variant="fade-up" delay={200}>
-              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal">
+              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal mb-8">
                 Join our software engineering and technology teams in Bengaluru. Work on high-performance full-stack applications, distributed databases, and automated cloud systems.
               </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href={JOB_APPLICATION_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-primary hover:bg-electric text-white shadow-glow transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <span>Apply Now</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <Link
+                  to="/jobs"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-300"
+                >
+                  <span>Explore Openings</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </ScrollReveal>
           </div>
         </div>
@@ -203,6 +223,17 @@ export default function CareersPage() {
                       <p className="text-xs text-brandText-secondary leading-relaxed">
                         {step.desc}
                       </p>
+                      {step.step === "01" && (
+                        <a
+                          href={JOB_APPLICATION_FORM_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-electric transition-colors"
+                        >
+                          <span>Open Application Form</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </ScrollReveal>
@@ -269,17 +300,23 @@ export default function CareersPage() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-brandBorder flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Due: {job.deadline}
-                    </span>
+                  <div className="pt-3 border-t border-brandBorder flex items-center justify-between gap-2">
                     <Link
                       to={`/jobs/${job.id}`}
-                      className="text-xs font-bold text-primary hover:text-electric inline-flex items-center gap-1"
+                      className="text-xs font-semibold text-slate-600 hover:text-primary inline-flex items-center gap-1"
                     >
                       <span>Details</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
+                    <a
+                      href={JOB_APPLICATION_FORM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold text-white bg-primary hover:bg-primary-hover px-3 py-1.5 rounded-lg inline-flex items-center gap-1 shadow-xs transition-all"
+                    >
+                      <span>Apply Now</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
               </ScrollReveal>

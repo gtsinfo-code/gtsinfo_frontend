@@ -7,8 +7,7 @@ import { SERVICES_DATA } from '../../data/servicesData';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const mapsUrl =
-    'https://www.google.com/maps/place/2nd+Floor,+7,+1st+Main+Rd,+Bovipalya,+Mahalakshmipuram,+Bengaluru,+Karnataka+560086/@13.0079767,77.5426662,859m';
+  const mapsUrl = COMPANY_INFO.mapsUrl;
 
   return (
     <footer

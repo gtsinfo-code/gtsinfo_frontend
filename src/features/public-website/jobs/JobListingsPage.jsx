@@ -12,9 +12,11 @@ import {
   XCircle,
   Info,
   ChevronRight,
-  Filter
+  Filter,
+  ExternalLink
 } from 'lucide-react';
 import { JOBS_DATA } from '../../../data/jobsData';
+import { JOB_APPLICATION_FORM_URL } from '../../../config/integrations';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 
 export default function JobListingsPage() {
@@ -289,18 +291,24 @@ export default function JobListingsPage() {
                         </div>
                       </div>
 
-                      {/* Action Button */}
-                      <div className="pt-4 border-t border-brandBorder flex items-center justify-between">
-                        <span className="text-[11px] font-mono text-slate-400">
-                          {job.employmentType}
-                        </span>
+                      {/* Action Buttons */}
+                      <div className="pt-4 border-t border-brandBorder flex items-center justify-between gap-2">
                         <Link
                           to={`/jobs/${job.id}`}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-primary group-hover:text-electric transition-colors"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 hover:text-primary transition-colors"
                         >
-                          <span>View Details & Apply</span>
-                          <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          <span>View Details</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
                         </Link>
+                        <a
+                          href={JOB_APPLICATION_FORM_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white transition-all shadow-xs"
+                        >
+                          <span>Apply Now</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
                       </div>
                     </div>
                   </ScrollReveal>
@@ -313,15 +321,26 @@ export default function JobListingsPage() {
               <Search className="w-10 h-10 text-slate-400 mx-auto mb-3" />
               <h3 className="text-lg font-bold text-brandText-primary">No Matching Vacancies Found</h3>
               <p className="text-xs text-brandText-secondary mt-1 max-w-sm mx-auto">
-                No vacancies matched your current search filters. Try adjusting your keyword or clearing the filters.
+                No vacancies matched your current search filters. You can clear filters or submit a general application directly.
               </p>
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="mt-5 px-5 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:bg-primary-hover shadow-sm transition-all"
-              >
-                Clear All Filters
-              </button>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-white border border-brandBorder text-brandText-primary hover:bg-softblue-100 shadow-xs transition-all"
+                >
+                  Clear All Filters
+                </button>
+                <a
+                  href={JOB_APPLICATION_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-primary text-white hover:bg-primary-hover shadow-sm transition-all inline-flex items-center gap-1.5"
+                >
+                  <span>Apply with Google Form</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
           )}
 
