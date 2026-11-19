@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { COMPANY_INFO } from '../constants/companyInfo';
 
-export const SITE_URL = 'https://gtsinfo.vercel.app';
+export const SITE_URL = 'https://gts-info.vercel.app';
 export const DEFAULT_SITE_TITLE = 'GTSInfo (GTS) — Software Services & Technology';
 export const DEFAULT_SITE_DESCRIPTION =
   'GTSInfo (GTS) is a leading software services and technology firm in Bengaluru, delivering full-stack engineering, cloud DevOps, and automated QA.';

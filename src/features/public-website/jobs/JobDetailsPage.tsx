@@ -39,8 +39,8 @@ export default function JobDetailsPage({ id: propId }: JobDetailsPageProps) {
     "hiringOrganization": {
       "@type": "Organization",
       "name": "GTSInfo",
-      "sameAs": "https://gtsinfo.vercel.app/",
-      "logo": "https://gtsinfo.vercel.app/favlogo-share.png"
+      "sameAs": "https://gts-info.vercel.app/",
+      "logo": "https://gts-info.vercel.app/favlogo-share.png"
     },
     "jobLocation": {
       "@type": "Place",
