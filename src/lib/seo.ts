@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { COMPANY_INFO } from '../constants/companyInfo';
 
-export const SITE_URL = 'https://gtsinfo.in';
+export const SITE_URL =
+  process.env.NEXT_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://gtsinfo.in';
 export const DEFAULT_SITE_TITLE = 'GTSInfo (GTS) — Enterprise Software Services & Technology Bengaluru';
 export const DEFAULT_SITE_DESCRIPTION =
   'GTSInfo (GTS) is a premier enterprise software services and technology firm in Bengaluru, delivering full-stack web applications, cloud DevOps, data engineering, and automated QA.';
@@ -80,7 +81,10 @@ export function constructMetadata({
       images: [fullImageUrl],
     },
     verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
+      google:
+        process.env.NEXT_GOOGLE_SITE_VERIFICATION ||
+        process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+        '',
     },
   };
 }

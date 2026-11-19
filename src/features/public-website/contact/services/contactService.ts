@@ -9,7 +9,8 @@
 import { ContactFormData } from '@/types';
 
 export const CONTACT_RECIPIENT_EMAIL: string =
-  (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_CONTACT_RECIPIENT_EMAIL) ||
+  (typeof process !== 'undefined' &&
+    (process.env?.NEXT_CONTACT_RECIPIENT_EMAIL || process.env?.NEXT_PUBLIC_CONTACT_RECIPIENT_EMAIL)) ||
   'hr@gtsinfo.in';
 
 export interface ContactValidationErrors {
