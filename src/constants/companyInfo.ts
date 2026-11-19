@@ -13,13 +13,26 @@ export const COMPANY_INFO: CompanyInfo = {
   tagline: "Engineering the Future. Together.",
   email: "hr@gtsinfo.in",
   address: {
+    title: "Corporate Headquarters",
     line1: "2nd Floor, 7, 1st Main Road",
     line2: "Mahalakshmipuram Layout, Mahalakshmi Layout",
     city: "Bengaluru",
     state: "Karnataka",
     pincode: "560086",
     country: "India",
-    full: "2nd Floor, 7, 1st Main Road, Mahalakshmipuram Layout, Mahalakshmi Layout, Bengaluru, Karnataka 560086, India"
+    full: "2nd Floor, 7, 1st Main Road, Mahalakshmipuram Layout, Mahalakshmi Layout, Bengaluru, Karnataka 560086, India",
+    mapsUrl: "https://www.google.com/maps?q=13.0079767,77.5426662"
+  },
+  secondaryAddress: {
+    title: "Whitefield Technology Center",
+    line1: "3rd Floor, Crescent 4, Prestige Shantiniketan",
+    line2: "ITPL Main Road, Whitefield",
+    city: "Bengaluru",
+    state: "Karnataka",
+    pincode: "560048",
+    country: "India",
+    full: "3rd Floor, Crescent 4, Prestige Shantiniketan, ITPL Main Road, Whitefield, Bengaluru, Karnataka 560048, India",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Prestige+Shantiniketan+ITPL+Main+Road+Bengaluru"
   },
   // Universal cross-platform Google Maps location link (opens exact Mahalakshmipuram coordinates 13.0079767, 77.5426662 on both mobile and laptop)
   mapsUrl: "https://www.google.com/maps?q=13.0079767,77.5426662",

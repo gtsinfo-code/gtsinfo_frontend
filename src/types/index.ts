@@ -3,6 +3,7 @@
  */
 
 export interface Address {
+  title?: string;
   line1: string;
   line2: string;
   city: string;
@@ -10,6 +11,7 @@ export interface Address {
   pincode: string;
   country: string;
   full: string;
+  mapsUrl?: string;
 }
 
 export interface CoreValue {
@@ -24,6 +26,7 @@ export interface CompanyInfo {
   tagline: string;
   email: string;
   address: Address;
+  secondaryAddress?: Address;
   mapsUrl: string;
   mission: string;
   vision: string;

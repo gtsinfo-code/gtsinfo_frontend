@@ -114,19 +114,35 @@ export default function Footer() {
           <div className="lg:col-span-3 space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-widest text-slate-200 flex items-center gap-2">
               <span className="w-1 h-3.5 bg-cyan-accent rounded-full inline-block" />
-              Corporate Office
+              Corporate Locations
             </h3>
 
             <div className="space-y-3.5 text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-cyan-accent flex-shrink-0 mt-0.5" />
-                <address className="not-italic leading-relaxed text-slate-300">
-                  {COMPANY_INFO.address.line1},<br />
-                  {COMPANY_INFO.address.line2},<br />
-                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} - {COMPANY_INFO.address.pincode},<br />
-                  {COMPANY_INFO.address.country}
-                </address>
+                <div>
+                  <span className="text-[11px] font-bold text-cyan-accent uppercase tracking-wider block">Corporate Headquarters</span>
+                  <address className="not-italic leading-relaxed text-slate-300">
+                    {COMPANY_INFO.address.line1},<br />
+                    {COMPANY_INFO.address.line2},<br />
+                    {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} - {COMPANY_INFO.address.pincode}
+                  </address>
+                </div>
               </div>
+
+              {COMPANY_INFO.secondaryAddress && (
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-cyan-accent flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-[11px] font-bold text-cyan-accent uppercase tracking-wider block">Whitefield Technology Center</span>
+                    <address className="not-italic leading-relaxed text-slate-300">
+                      {COMPANY_INFO.secondaryAddress.line1},<br />
+                      {COMPANY_INFO.secondaryAddress.line2},<br />
+                      {COMPANY_INFO.secondaryAddress.city}, {COMPANY_INFO.secondaryAddress.state} - {COMPANY_INFO.secondaryAddress.pincode}
+                    </address>
+                  </div>
+                </div>
+              )}
 
               <div className="flex items-center gap-2.5 pt-0.5">
                 <Mail className="w-4 h-4 text-cyan-accent flex-shrink-0" />
@@ -138,17 +154,29 @@ export default function Footer() {
                 </a>
               </div>
 
-              <div className="pt-1.5">
+              <div className="pt-1.5 flex flex-wrap gap-2">
                 <a
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-lg bg-navy-900 hover:bg-navy-800 text-white border border-white/15 transition-all hover:border-cyan-accent/50 shadow-sm"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-navy-800 text-white border border-white/15 transition-all hover:border-cyan-accent/50 shadow-sm"
                 >
-                  <Globe className="w-3.5 h-3.5 text-cyan-accent" />
-                  <span>View on Google Maps</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400" />
+                  <Globe className="w-3 h-3 text-cyan-accent" />
+                  <span>HQ Map</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
                 </a>
+                {COMPANY_INFO.secondaryAddress?.mapsUrl && (
+                  <a
+                    href={COMPANY_INFO.secondaryAddress.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-navy-800 text-white border border-white/15 transition-all hover:border-cyan-accent/50 shadow-sm"
+                  >
+                    <Globe className="w-3 h-3 text-cyan-accent" />
+                    <span>Whitefield Map</span>
+                    <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
+                  </a>
+                )}
               </div>
             </div>
           </div>

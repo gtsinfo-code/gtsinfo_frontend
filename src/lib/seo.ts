@@ -107,6 +107,37 @@ export const ORGANIZATION_SCHEMA = {
         postalCode: COMPANY_INFO.address.pincode,
         addressCountry: 'IN',
       },
+      location: [
+        {
+          '@type': 'Place',
+          name: 'GTS Corporate Headquarters',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: COMPANY_INFO.address.line1,
+            addressLocality: COMPANY_INFO.address.city,
+            addressRegion: COMPANY_INFO.address.state,
+            postalCode: COMPANY_INFO.address.pincode,
+            addressCountry: 'IN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 13.0079767,
+            longitude: 77.5426662,
+          },
+        },
+        {
+          '@type': 'Place',
+          name: 'GTS Whitefield Technology Center',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '3rd Floor, Crescent 4, Prestige Shantiniketan, ITPL Main Road',
+            addressLocality: 'Whitefield, Bengaluru',
+            addressRegion: 'Karnataka',
+            postalCode: '560048',
+            addressCountry: 'IN',
+          },
+        },
+      ],
       geo: {
         '@type': 'GeoCoordinates',
         latitude: 13.0079767,

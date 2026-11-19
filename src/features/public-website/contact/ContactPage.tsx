@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  MapPin, 
-  Send, 
-  CheckCircle2, 
-  AlertCircle, 
-  Clock, 
+import {
+  Mail,
+  MapPin,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Clock,
   Info,
   Navigation,
   Building,
@@ -18,8 +18,8 @@ import {
   PhoneCall,
   RotateCcw
 } from 'lucide-react';
-import { 
-  COMPANY_INFO 
+import {
+  COMPANY_INFO
 } from '../../../constants/companyInfo';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
 import { sendContactEmail, validateContactForm, CONTACT_RECIPIENT_EMAIL, ContactValidationErrors } from './services/contactService';
@@ -45,6 +45,7 @@ export default function ContactPage() {
 
   // Universal cross-platform Google Maps verified link (opens exact Mahalakshmipuram location on mobile & laptop)
   const exactMapsUrl = COMPANY_INFO.mapsUrl;
+  const whitefieldMapsUrl = COMPANY_INFO.secondaryAddress?.mapsUrl || exactMapsUrl;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,14 +90,14 @@ export default function ContactPage() {
         description="Connect with GTSInfo Headquarters in Mahalakshmipuram Layout, Bengaluru. Contact us for software engineering solutions, enterprise partnerships, or hiring."
         canonicalPath="/contact"
       />
-      
+
       {/* 1. Page Hero */}
       <section className="bg-navy-950 text-white pt-36 pb-20 lg:pt-44 lg:pb-24 relative overflow-hidden border-b border-navy-800">
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <div className="absolute top-0 right-1/4 w-[480px] h-[480px] bg-primary/20 rounded-full blur-[140px] animate-glow-pulse" />
           <div className="absolute bottom-0 left-10 w-[380px] h-[380px] bg-cyan-accent/15 rounded-full blur-[120px]" />
-          
-          <div 
+
+          <div
             className="absolute inset-0 opacity-[0.05]"
             style={{
               backgroundImage: `radial-gradient(circle at 1px 1px, #FFFFFF 1px, transparent 0)`,
@@ -135,14 +136,14 @@ export default function ContactPage() {
       {/* 2. Main Contact Grid: Verified Details + Functional Direct Message Form */}
       <section className="py-20 lg:py-24 bg-white text-brandText-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            
+
             {/* Left Column: Official Corporate Premises Information */}
             <div className="lg:col-span-5 space-y-8">
               <ScrollReveal variant="fade-up">
                 <div className="p-8 sm:p-9 rounded-3xl bg-softblue-50/80 border border-brandBorder shadow-subtle space-y-7">
-                  
+
                   <div>
                     <span className="text-xs font-bold uppercase tracking-wider text-primary px-3 py-1 bg-softblue-100 rounded-lg inline-block mb-3">
                       Verified Information
@@ -155,24 +156,72 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  <div className="space-y-5">
-                    {/* Facility Address */}
+                  <div className="space-y-4">
+                    {/* Facility Address 1: Corporate Headquarters */}
                     <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-brandBorder/80">
                       <div className="w-10 h-10 rounded-xl bg-softblue-100 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-softblue-200">
                         <MapPin className="w-5 h-5" />
                       </div>
-                      <div>
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-brandText-primary mb-0.5">
-                          Bengaluru Headquarters
-                        </h3>
-                        <address className="not-italic text-xs text-brandText-secondary leading-relaxed font-medium">
+                      <div className="flex-grow">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xs font-bold uppercase tracking-wider text-brandText-primary mb-0.5">
+                            Corporate Headquarters
+                          </h3>
+                          <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-softblue-50 text-primary border border-softblue-200">
+                            Registered Office
+                          </span>
+                        </div>
+                        <address className="not-italic text-xs text-brandText-secondary leading-relaxed font-medium mt-1">
                           {COMPANY_INFO.address.line1},<br />
                           {COMPANY_INFO.address.line2},<br />
                           {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} - {COMPANY_INFO.address.pincode},<br />
                           {COMPANY_INFO.address.country}
                         </address>
+                        <a
+                          href={exactMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:text-electric mt-2"
+                        >
+                          <Navigation className="w-3 h-3" />
+                          <span>View on Google Maps</span>
+                        </a>
                       </div>
                     </div>
+
+                    {/* Facility Address 2: Whitefield Campus */}
+                    {COMPANY_INFO.secondaryAddress && (
+                      <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-brandBorder/80">
+                        <div className="w-10 h-10 rounded-xl bg-cyan-accent/15 text-navy-950 flex items-center justify-center flex-shrink-0 mt-0.5 border border-cyan-accent/30">
+                          <Building className="w-5 h-5 text-primary" />
+                        </div>
+                        <div className="flex-grow">
+                          <div className="flex items-center justify-between">
+                            <h3 className="text-xs font-bold uppercase tracking-wider text-brandText-primary mb-0.5">
+                              Whitefield Technology Center
+                            </h3>
+                            <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                              Development Hub
+                            </span>
+                          </div>
+                          <address className="not-italic text-xs text-brandText-secondary leading-relaxed font-medium mt-1">
+                            {COMPANY_INFO.secondaryAddress.line1},<br />
+                            {COMPANY_INFO.secondaryAddress.line2},<br />
+                            {COMPANY_INFO.secondaryAddress.city}, {COMPANY_INFO.secondaryAddress.state} - {COMPANY_INFO.secondaryAddress.pincode},<br />
+                            {COMPANY_INFO.secondaryAddress.country}
+                          </address>
+                          <a
+                            href={whitefieldMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:text-electric mt-2"
+                          >
+                            <Navigation className="w-3 h-3" />
+                            <span>View on Google Maps</span>
+                          </a>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Official Email */}
                     <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-brandBorder/80">
@@ -244,7 +293,7 @@ export default function ContactPage() {
             <div className="lg:col-span-7">
               <ScrollReveal variant="fade-left" delay={100}>
                 <div className="p-8 sm:p-10 rounded-3xl bg-white border border-brandBorder shadow-card">
-                  
+
                   <div className="mb-8">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-softblue-100 text-primary text-xs font-bold uppercase tracking-wider mb-2">
                       <Sparkles className="w-3 h-3" />
@@ -283,7 +332,7 @@ export default function ContactPage() {
                       </div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-                        
+
                         {/* Full Name */}
                         <div>
                           <label className="block text-xs font-bold uppercase tracking-wider text-brandText-secondary mb-1.5">
@@ -294,9 +343,8 @@ export default function ContactPage() {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="e.g. Rahul Sharma"
-                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                              errors.name ? 'border-red-400' : 'border-brandBorder'
-                            }`}
+                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.name ? 'border-red-400' : 'border-brandBorder'
+                              }`}
                           />
                           {errors.name && (
                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -316,9 +364,8 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="name@company.com"
-                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                              errors.email ? 'border-red-400' : 'border-brandBorder'
-                            }`}
+                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.email ? 'border-red-400' : 'border-brandBorder'
+                              }`}
                           />
                           {errors.email && (
                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -341,9 +388,8 @@ export default function ContactPage() {
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             placeholder="e.g. +91 98765 43210"
-                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                              errors.phone ? 'border-red-400' : 'border-brandBorder'
-                            }`}
+                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.phone ? 'border-red-400' : 'border-brandBorder'
+                              }`}
                           />
                           {errors.phone && (
                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -363,9 +409,8 @@ export default function ContactPage() {
                             value={formData.subject}
                             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                             placeholder="e.g. Enterprise Software Engineering Inquiry"
-                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                              errors.subject ? 'border-red-400' : 'border-brandBorder'
-                            }`}
+                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.subject ? 'border-red-400' : 'border-brandBorder'
+                              }`}
                           />
                           {errors.subject && (
                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -385,9 +430,8 @@ export default function ContactPage() {
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             placeholder="Please describe your requirements or inquiry in detail (minimum 10 characters)..."
-                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${
-                              errors.message ? 'border-red-400' : 'border-brandBorder'
-                            }`}
+                            className={`w-full px-4 py-3 bg-softblue-50/70 border rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white transition-all text-brandText-primary ${errors.message ? 'border-red-400' : 'border-brandBorder'
+                              }`}
                           />
                           {errors.message && (
                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -446,9 +490,9 @@ export default function ContactPage() {
       {/* 3. Dedicated Facility Entrance Showcase: 100% Complete Image, Zero Cropped Signage */}
       <section className="py-20 lg:py-24 bg-softblue-50/70 border-t border-brandBorder">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Narrative: Corporate Facility Overview */}
             <div className="lg:col-span-6 space-y-6">
               <ScrollReveal variant="fade-up">
@@ -491,7 +535,7 @@ export default function ContactPage() {
             {/* Right Dedicated Portrait Showcase Card: Zero Cropping of DeskHub Signage or Glass Entry */}
             <div className="lg:col-span-6 flex justify-center">
               <ScrollReveal variant="fade-left" delay={200} className="w-full max-w-md">
-                <div 
+                <div
                   className="group relative rounded-3xl overflow-hidden bg-navy-950 border border-brandBorder shadow-card p-2.5 transition-all duration-300 hover:shadow-card-hover hover:border-primary/50 cursor-pointer"
                   onClick={() => setLightboxOpen(true)}
                   role="button"
@@ -542,7 +586,7 @@ export default function ContactPage() {
       {/* 4. Full-Width Aligned Bengaluru Location & Interactive Google Maps Section */}
       <section className="py-20 lg:py-24 bg-white border-t border-brandBorder">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <ScrollReveal variant="fade-up">
             <div className="max-w-3xl mb-10 text-center sm:text-left">
               <span className="text-xs font-bold uppercase tracking-wider text-primary px-3 py-1 bg-softblue-100 rounded-lg inline-block mb-3">
