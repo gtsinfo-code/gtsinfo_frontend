@@ -28,7 +28,7 @@ export async function generateMetadata({
   }
 
   return constructMetadata({
-    title: `${job.title} | Career Openings`,
+    title: `${job.title} | GTSInfo Careers`,
     description: `${job.title} in Bengaluru at GTSInfo. ${job.summary}`,
     path: `/jobs/${job.id}`,
   });

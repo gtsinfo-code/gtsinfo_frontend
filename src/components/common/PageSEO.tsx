@@ -3,7 +3,9 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-const BASE_URL = 'https://gts-info.vercel.app';
+import { SITE_URL } from '@/lib/seo';
+
+const BASE_URL = SITE_URL;
 const DEFAULT_TITLE = 'GTSInfo | Software Services & Technology';
 const DEFAULT_DESCRIPTION =
   'GTSInfo delivers resilient enterprise software development, cloud infrastructure, automated QA testing, and data engineering solutions. Headquartered in Bengaluru.';

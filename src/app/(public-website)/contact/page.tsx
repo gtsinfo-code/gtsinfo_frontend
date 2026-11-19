@@ -5,7 +5,7 @@ import { constructMetadata } from '@/lib/seo';
 export const metadata: Metadata = constructMetadata({
   title: 'Contact Engineering & Corporate Office',
   description:
-    'Contact GTSInfo in Bengaluru for enterprise software services, client project consultations, careers, and engineering partnerships.',
+    'Contact GTSInfo in Bengaluru for enterprise software services consultations, careers, and partnerships. Offices in Mahalakshmi Layout and Whitefield.',
   path: '/contact',
 });
 

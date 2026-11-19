@@ -5,7 +5,7 @@ import { constructMetadata } from '@/lib/seo';
 export const metadata: Metadata = constructMetadata({
   title: 'About Us & Leadership Culture',
   description:
-    "Learn about GTSInfo's corporate mission, engineering culture, verified Mahalakshmipuram technology center in Bengaluru, and delivery methodology.",
+    "Learn about GTSInfo's corporate mission, engineering values, and verified technology centers in Mahalakshmi Layout and Whitefield, Bengaluru.",
   path: '/about',
 });
 

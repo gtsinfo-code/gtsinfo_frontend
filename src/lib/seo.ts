@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { COMPANY_INFO } from '../constants/companyInfo';
 
-export const SITE_URL = 'https://gts-info.vercel.app';
-export const DEFAULT_SITE_TITLE = 'GTSInfo (GTS) — Software Services & Technology';
+export const SITE_URL = 'https://gtsinfo.in';
+export const DEFAULT_SITE_TITLE = 'GTSInfo (GTS) — Enterprise Software Services & Technology Bengaluru';
 export const DEFAULT_SITE_DESCRIPTION =
-  'GTSInfo (GTS) is a leading software services and technology firm in Bengaluru, delivering full-stack engineering, cloud DevOps, and automated QA.';
+  'GTSInfo (GTS) is a premier enterprise software services and technology firm in Bengaluru, delivering full-stack web applications, cloud DevOps, data engineering, and automated QA.';
 
 export function constructMetadata({
   title,
@@ -65,8 +65,8 @@ export function constructMetadata({
       images: [
         {
           url: fullImageUrl,
-          width: 800,
-          height: 800,
+          width: 1200,
+          height: 630,
           alt: `${COMPANY_INFO.name} (GTS) Software Services & Technology`,
         },
       ],
@@ -74,13 +74,13 @@ export function constructMetadata({
       type: 'website',
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: fullTitle,
       description,
       images: [fullImageUrl],
     },
     verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'GTSInfo-google-verification',
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
     },
   };
 }
@@ -155,10 +155,32 @@ export const ORGANIZATION_SCHEMA = {
       '@id': `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: COMPANY_INFO.name,
-      description: 'Software Services & Technology - Engineering the Future.',
+      alternateName: 'GTS Info Official Website',
+      description: 'GTSInfo (GTS) — Software Services & Technology. Engineering the Future. Together.',
       publisher: {
         '@id': `${SITE_URL}/#organization`,
       },
     },
   ],
 };
+
+export function constructBreadcrumbSchema(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${SITE_URL}/`,
+      },
+      ...items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: item.name,
+        item: `${SITE_URL}${item.path.startsWith('/') ? item.path : `/${item.path}`}`,
+      })),
+    ],
+  };
+}

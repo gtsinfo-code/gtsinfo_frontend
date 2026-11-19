@@ -41,7 +41,7 @@ export default function ServicesPage() {
     "provider": {
       "@type": "Corporation",
       "name": "GTSInfo",
-      "url": "https://gts-info.vercel.app/"
+      "url": "https://gtsinfo.in/"
     },
     "areaServed": "Global",
     "hasOfferCatalog": {
