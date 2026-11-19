@@ -47,24 +47,32 @@ requiredAssets.forEach(rel => {
   check(`Asset: ${rel}`, exists, size);
 });
 
-// 2. Next.js App Router Pages
+// 2. Next.js App Router Modular Pages
 const appRouterPages = [
   'src/app/layout.tsx',
-  'src/app/page.tsx',
   'src/app/globals.css',
   'src/app/sitemap.ts',
   'src/app/robots.ts',
   'src/app/not-found.tsx',
-  'src/app/about/page.tsx',
-  'src/app/services/page.tsx',
-  'src/app/careers/page.tsx',
-  'src/app/jobs/page.tsx',
-  'src/app/jobs/[id]/page.tsx',
-  'src/app/contact/page.tsx',
-  'src/app/login/page.tsx',
-  'src/app/register/page.tsx',
-  'src/app/forgot-password/page.tsx',
-  'src/app/reset-password/page.tsx'
+  // Public Website Module
+  'src/app/(public-website)/layout.tsx',
+  'src/app/(public-website)/page.tsx',
+  'src/app/(public-website)/about/page.tsx',
+  'src/app/(public-website)/services/page.tsx',
+  'src/app/(public-website)/careers/page.tsx',
+  'src/app/(public-website)/jobs/page.tsx',
+  'src/app/(public-website)/jobs/[id]/page.tsx',
+  'src/app/(public-website)/contact/page.tsx',
+  // Applicant Portal Module
+  'src/app/(applicant-portal)/layout.tsx',
+  'src/app/(applicant-portal)/login/page.tsx',
+  'src/app/(applicant-portal)/register/page.tsx',
+  'src/app/(applicant-portal)/forgot-password/page.tsx',
+  'src/app/(applicant-portal)/reset-password/page.tsx',
+  // Administrator Portal Module
+  'src/app/(admin-portal)/layout.tsx',
+  'src/app/(admin-portal)/admin/page.tsx',
+  'src/app/(admin-portal)/admin/login/page.tsx'
 ];
 
 console.log("\n--- 2. Next.js App Router Pages ---");
@@ -78,9 +86,10 @@ const tsModules = [
   'src/components/common/Logo.tsx',
   'src/components/common/ScrollToTopAndHash.tsx',
   'src/components/common/PageSEO.tsx',
+  'src/components/common/NotFoundPage.tsx',
   'src/components/layout/Navbar.tsx',
   'src/components/layout/Footer.tsx',
-  'src/components/layout/Layout.tsx',
+  'src/components/layout/PublicSiteLayout.tsx',
   'src/components/motion/GlassCard.tsx',
   'src/components/motion/ImageReveal.tsx',
   'src/components/motion/ScrollProgress.tsx',
@@ -101,11 +110,13 @@ const tsModules = [
   'src/features/public-website/jobs/JobListingsPage.tsx',
   'src/features/public-website/jobs/JobDetailsPage.tsx',
   'src/features/public-website/contact/ContactPage.tsx',
-  'src/features/public-website/not-found/NotFoundPage.tsx',
   'src/features/applicant-portal/auth/LoginPage.tsx',
   'src/features/applicant-portal/auth/RegisterPage.tsx',
   'src/features/applicant-portal/auth/ForgotPasswordPage.tsx',
   'src/features/applicant-portal/auth/ResetPasswordPage.tsx',
+  'src/features/admin-portal/auth/AdminLoginPage.tsx',
+  'src/features/admin-portal/dashboard/AdminDashboardPage.tsx',
+  'src/features/public-website/contact/services/contactService.ts',
   'src/config/integrations.ts',
   'src/constants/companyInfo.ts',
   'src/data/companyGalleryData.ts',
@@ -113,7 +124,6 @@ const tsModules = [
   'src/data/servicesData.ts',
   'src/hooks/useScrollPosition.ts',
   'src/lib/seo.ts',
-  'src/services/contactService.ts',
   'src/types/index.ts',
   'src/types/images.d.ts',
   'src/utils/formatters.ts'

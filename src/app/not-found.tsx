@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
-import NotFoundPage from '../features/public-website/not-found/NotFoundPage';
-import { constructMetadata } from '../lib/seo';
+import NotFoundPage from '@/components/common/NotFoundPage';
+import PublicSiteLayout from '@/components/layout/PublicSiteLayout';
+import { constructMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Page Not Found (404)',
@@ -9,5 +10,9 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function NotFound() {
-  return <NotFoundPage />;
+  return (
+    <PublicSiteLayout>
+      <NotFoundPage />
+    </PublicSiteLayout>
+  );
 }

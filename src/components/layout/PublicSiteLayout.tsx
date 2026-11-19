@@ -4,11 +4,11 @@ import Footer from './Footer';
 import ScrollProgress from '../motion/ScrollProgress';
 import ScrollToTopAndHash from '../common/ScrollToTopAndHash';
 
-export interface LayoutProps {
+export interface PublicSiteLayoutProps {
   children: ReactNode;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function PublicSiteLayout({ children }: PublicSiteLayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-white text-brandText-primary font-sans antialiased selection:bg-primary selection:text-white">
       {/* Route & Hash Scroll Position Manager */}

@@ -22,7 +22,7 @@ import {
   COMPANY_INFO 
 } from '../../../constants/companyInfo';
 import { COMPANY_AUTHENTIC_IMAGES } from '../../../data/companyGalleryData';
-import { sendContactEmail, validateContactForm, CONTACT_RECIPIENT_EMAIL, ContactValidationErrors } from '../../../services/contactService';
+import { sendContactEmail, validateContactForm, CONTACT_RECIPIENT_EMAIL, ContactValidationErrors } from './services/contactService';
 import PageSEO from '../../../components/common/PageSEO';
 import ScrollReveal from '../../../components/motion/ScrollReveal';
 

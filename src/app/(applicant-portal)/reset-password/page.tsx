@@ -4,7 +4,7 @@ import { constructMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Reset Password - Candidate Portal',
-  description: 'Set a new secure password for your candidate account at GTSInfo.',
+  description: 'Set a new secure password for your GTSInfo candidate recruitment account.',
   path: '/reset-password',
   noIndex: true,
 });

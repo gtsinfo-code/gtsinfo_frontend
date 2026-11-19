@@ -6,7 +6,7 @@
  * In Phase 2, this function can easily be pointed to an internal Node.js backend.
  */
 
-import { ContactFormData } from '../types';
+import { ContactFormData } from '@/types';
 
 export const CONTACT_RECIPIENT_EMAIL: string =
   (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_CONTACT_RECIPIENT_EMAIL) ||

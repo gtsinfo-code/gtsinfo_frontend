@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { COMPANY_INFO } from '../constants/companyInfo';
 
 export const SITE_URL = 'https://gtsinfo.vercel.app';
-export const DEFAULT_SITE_TITLE = 'GTSInfo | Software Services & Technology';
+export const DEFAULT_SITE_TITLE = 'GTSInfo (GTS) — Software Services & Technology';
 export const DEFAULT_SITE_DESCRIPTION =
-  'GTSInfo (GTS) - Software Services and Technology. Engineering the Future. Together. Enterprise technology solutions, software engineering, and career opportunities.';
+  'GTSInfo (GTS) is a leading software services and technology firm in Bengaluru, delivering full-stack engineering, cloud DevOps, and automated QA.';
 
 export function constructMetadata({
   title,
@@ -12,12 +12,22 @@ export function constructMetadata({
   path = '',
   image = '/favlogo-share.png',
   noIndex = false,
+  keywords = [
+    'GTS',
+    'GTS Info',
+    'GTSInfo',
+    'GTS Bengaluru',
+    'GTS Software Services',
+    'Software Services Bengaluru',
+    'Mahalakshmi Layout Technology Center',
+  ],
 }: {
   title?: string;
   description?: string;
   path?: string;
   image?: string;
   noIndex?: boolean;
+  keywords?: string[];
 } = {}): Metadata {
   const fullTitle = title ? `${title} | GTSInfo` : DEFAULT_SITE_TITLE;
   const canonicalUrl = `${SITE_URL}${path === '/' ? '' : path}`;
@@ -26,37 +36,38 @@ export function constructMetadata({
   return {
     title: fullTitle,
     description,
+    keywords,
     metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: canonicalUrl,
     },
     robots: noIndex
       ? {
-          index: false,
-          follow: false,
-        }
+        index: false,
+        follow: false,
+      }
       : {
+        index: true,
+        follow: true,
+        googleBot: {
           index: true,
           follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-          },
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
         },
+      },
     openGraph: {
       title: fullTitle,
       description,
       url: canonicalUrl,
-      siteName: COMPANY_INFO.name,
+      siteName: `${COMPANY_INFO.name} (GTS)`,
       images: [
         {
           url: fullImageUrl,
           width: 800,
           height: 800,
-          alt: `${COMPANY_INFO.name} Software Services & Technology`,
+          alt: `${COMPANY_INFO.name} (GTS) Software Services & Technology`,
         },
       ],
       locale: 'en_US',
@@ -68,6 +79,9 @@ export function constructMetadata({
       description,
       images: [fullImageUrl],
     },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'GTSInfo-google-verification',
+    },
   };
 }
 
@@ -78,12 +92,12 @@ export const ORGANIZATION_SCHEMA = {
       '@type': ['Corporation', 'LocalBusiness'],
       '@id': `${SITE_URL}/#organization`,
       name: COMPANY_INFO.name,
-      alternateName: 'GTS Software Services & Technology',
+      alternateName: ['GTS', 'GTS Info', 'GTSInfo', 'GTS Software Services & Technology', 'GTS Bengaluru'],
       url: `${SITE_URL}/`,
       logo: `${SITE_URL}/favlogo-share.png`,
       image: `${SITE_URL}/og-image.png`,
       description:
-        'GTSInfo delivers enterprise full-stack software development, cloud infrastructure, automated QA testing, and data engineering solutions.',
+        'GTSInfo (GTS) delivers enterprise full-stack software development, cloud infrastructure, automated QA testing, and data engineering solutions in Bengaluru.',
       email: COMPANY_INFO.email,
       address: {
         '@type': 'PostalAddress',

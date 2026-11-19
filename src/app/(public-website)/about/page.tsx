@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import AboutPage from '../../features/public-website/about/AboutPage';
-import { constructMetadata } from '../../lib/seo';
+import AboutPage from '@/features/public-website/about/AboutPage';
+import { constructMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = constructMetadata({
   title: 'About Us & Leadership Culture',

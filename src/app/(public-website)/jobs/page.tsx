@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import JobListingsPage from '../../features/public-website/jobs/JobListingsPage';
-import { constructMetadata } from '../../lib/seo';
+import JobListingsPage from '@/features/public-website/jobs/JobListingsPage';
+import { constructMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Open Software Engineering Job Listings',
