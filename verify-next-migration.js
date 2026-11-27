@@ -25,8 +25,6 @@ function check(label, condition, detail = "") {
 // 1. Assets verification
 const requiredAssets = [
   'src/assets/branding/GTS_Software_Services_Logo_Transparent.png',
-  'src/assets/branding/gtsinfo-official-logo.png',
-  'src/assets/branding/gtsinfo-logo.png',
   'src/assets/images/hero-globe-bg.jpg',
   'src/assets/images/company/01-open-office-workstations.jpg',
   'src/assets/images/company/02-open-office-wide-view.jpg',

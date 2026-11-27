@@ -80,6 +80,17 @@ export function constructMetadata({
       description,
       images: [fullImageUrl],
     },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon-192x192.png', type: 'image/png', sizes: '192x192' },
+        { url: '/favlogo.png', type: 'image/png', sizes: '800x800' },
+      ],
+      apple: [
+        { url: '/favlogo.png', sizes: '180x180', type: 'image/png' },
+      ],
+      shortcut: '/favicon.ico',
+    },
     verification: {
       google:
         process.env.NEXT_GOOGLE_SITE_VERIFICATION ||

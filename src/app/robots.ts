@@ -28,6 +28,10 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
         ],
       },
+      {
+        userAgent: 'Googlebot-Image',
+        allow: '/',
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
